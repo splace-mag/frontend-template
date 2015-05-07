@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Circular';
+    src: url('../../CircularStd-Book.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Circular';
+    src: url('../../CircularStd-BookItalic.otf');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Circular';
+    src: url('../../CircularStd-Medium.otf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+	background-color: white;
+	font-size: 16px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.splacer {
+	height: 100vh;
+	background-image: -webkit-linear-gradient(150deg, rgb(73,137,124), rgb(112,198,215));
+	background-image: linear-gradient(-60deg, rgb(73,137,124), rgb(112,198,215));
+	position: relative;
+}
+
+.splacer:after {
+	content: '';
+	box-shadow:  0 0 100vh 0 rgba(0,0,0,1);
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: -100%;
+	height: 100%;
+}
+
+.paragraph-container {
+	width: 100%;
+	position: relative;
+	font-family: 'Circular';
+}
+
+.comment {
+	overflow: hidden;
+	background-color: gray;
+	float: left;
+	width: 10%;
+	padding: 1rem;
+	margin: 0;
+	position: absolute;
+	left: 0;
+	-webkit-transform: scale(0.5);
+	    -ms-transform: scale(0.5);
+	        transform: scale(0.5);
+	-webkit-transform-origin: top left;
+	    -ms-transform-origin: top left;
+	        transform-origin: top left;
+	display: none;
+}
+
+.annotation-active .paragraph {
+	color: gray;
+	opacity: 0.5;
+}
+
+.paragraph {
+	display: block;
+	width: 66%;
+	padding: 1rem 1rem 1rem 2rem;
+	margin: 0;
+	margin-left: 6%;
+	-webkit-transition: all 0.7s ease;
+	        transition: all 0.7s ease;
+	-webkit-transform-origin: top left;
+	    -ms-transform-origin: top left;
+	        transform-origin: top left;
+	z-index: 1;
+	position: relative;
+}
+
+.annotation,
+.paragraph p {
+	font-size: 1.3rem;
+	line-height: 1.5em;
+}
+
+.active .paragraph {
+	padding-top: 1.4rem;
+	-webkit-transform: scale(0.65);
+	    -ms-transform: scale(0.65);
+	        transform: scale(0.65);
+}
+
+.annotation {
+	float: left;
+	width: 40%;
+	padding: 1rem;
+	margin: 0 1rem;
+	position: absolute;
+	right: 5%;
+	top: 50%;
+	-webkit-transition: all 0.7s ease;
+	        transition: all 0.7s ease;
+	-webkit-transform: translate(0, -50%) scale(0.5);
+	    -ms-transform: translate(0, -50%) scale(0.5);
+	        transform: translate(0, -50%) scale(0.5);
+	-webkit-transform-origin: center right;
+	    -ms-transform-origin: center right;
+	        transform-origin: center right;
+	background-color: #fff !important;
+	z-index: 2;
+	color: #09909f;
+}
+
+.extra {
+	color: #09909f;
+	font-weight: 600;
+}
+
+.annotation-active .annotation:not(.active) {
+	opacity: 0.5;
+}
+
+.annotation.active {
+	-webkit-transform: translate(0, -50%) scale(1);
+	    -ms-transform: translate(0, -50%) scale(1);
+	        transform: translate(0, -50%) scale(1);
+	-webkit-transform-origin: center right;
+	    -ms-transform-origin: center right;
+	        transform-origin: center right;
+	padding: 1rem;
+}
+
+.active .annotation {
+	top: 0;
+}
