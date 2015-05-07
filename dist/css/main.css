@@ -29,20 +29,99 @@ body {
 }
 
 .splacer {
-	height: 100vh;
+	height: 95vh;
 	background-image: -webkit-linear-gradient(150deg, rgb(73,137,124), rgb(112,198,215));
 	background-image: linear-gradient(-60deg, rgb(73,137,124), rgb(112,198,215));
 	position: relative;
+	overflow: hidden;
+}
+
+.splacer h1 {
+	color: white;
+	width: 70%;
+	top: 30%;
+	right: 5%;
+	z-index: 5;
+	color: white;
+	position: absolute;
+	border: 6px solid white;
+	padding: 2.5rem 2rem;
+	font-size: 3.5rem;
+	line-height: 1.4em;
+	text-align: center;
+}
+
+.splacer aside {
+	font-family: 'Circular';
+	background-color: #fff;
+	font-size: 1.8rem;
+	line-height: 1.2em;
+	padding: 2rem 1rem;
+	position: absolute;
+	z-index: 6;
+	width: 45%;
+	top: 57%;
+	right: 10%;
+	text-align: center;
+}
+
+.coverimg {
+	top: 9%;
+	position: absolute;
+	z-index: 3;
+}
+
+.marker {
+	position: relative;
+	font-family: 'Circular';
+	font-size: 1rem;
+	padding: 1rem;
+	font-weight: 600;
+	z-index: 4;
+	color: white;
+	text-align: center;
+}
+
+.marker.annotated {
+	position: absolute;
+	-webkit-transform-origin: top;
+	    -ms-transform-origin: top;
+	        transform-origin: top;
+	-webkit-transform: translate(-50%) rotate(270deg);
+	    -ms-transform: translate(-50%) rotate(270deg);
+	        transform: translate(-50%) rotate(270deg);
+	left: 0;
+	top: 50%;
+	padding: 0.5rem;
+	text-transform: uppercase;
+}
+
+.marker.down {
+	font-family: 'Circular';
+	position: absolute;
+	width: 100%;
+	bottom: 5%;
+}
+
+.author {
+	font-family: 'Circular';
+	position: absolute;
+	font-size: 1.1rem;
+	line-height: 1.1em;
+	color: #fff;
+	right: 10%;
+	bottom: 20%;
 }
 
 .splacer:after {
 	content: '';
-	box-shadow:  0 0 100vh 0 rgba(0,0,0,1);
+	box-shadow:  0 0 100vh 200px rgba(0,0,0,1);
 	position: absolute;
 	width: 100%;
 	left: 0;
 	top: -100%;
 	height: 100%;
+	z-index: 2;
 }
 
 .paragraph-container {
@@ -52,21 +131,13 @@ body {
 }
 
 .comment {
-	overflow: hidden;
-	background-color: gray;
-	float: left;
-	width: 10%;
-	padding: 1rem;
-	margin: 0;
+	background-image: url('../../assets/comment-02.svg');
+	width: 20px;
+	height: 20px;
 	position: absolute;
-	left: 0;
-	-webkit-transform: scale(0.5);
-	    -ms-transform: scale(0.5);
-	        transform: scale(0.5);
-	-webkit-transform-origin: top left;
-	    -ms-transform-origin: top left;
-	        transform-origin: top left;
-	display: none;
+	background-repeat: no-repeat;
+	left: 3%;
+	top: 2.9rem;
 }
 
 .annotation-active .paragraph {
@@ -89,6 +160,12 @@ body {
 	position: relative;
 }
 
+.paragraph.extra {
+	width: 90%;
+	padding-top: 2rem;
+	padding-bottom: 0;
+}
+
 .annotation,
 .paragraph p {
 	font-size: 1.3rem;
@@ -109,23 +186,26 @@ body {
 	margin: 0 1rem;
 	position: absolute;
 	right: 5%;
-	top: 50%;
+	top: 2rem;
 	-webkit-transition: all 0.7s ease;
 	        transition: all 0.7s ease;
-	-webkit-transform: translate(0, -50%) scale(0.5);
-	    -ms-transform: translate(0, -50%) scale(0.5);
-	        transform: translate(0, -50%) scale(0.5);
-	-webkit-transform-origin: center right;
-	    -ms-transform-origin: center right;
-	        transform-origin: center right;
+	-webkit-transform: translate(0, 0) scale(0.5);
+	    -ms-transform: translate(0, 0) scale(0.5);
+	        transform: translate(0, 0) scale(0.5);
+	-webkit-transform-origin: top right;
+	    -ms-transform-origin: top right;
+	        transform-origin: top right;
 	background-color: #fff !important;
 	z-index: 2;
 	color: #09909f;
 }
 
-.extra {
+.paragraph p.extra {
+	font-size: 1.7rem;
+	line-height: 1.3em;
 	color: #09909f;
 	font-weight: 600;
+	margin-bottom: 0;
 }
 
 .annotation-active .annotation:not(.active) {
@@ -133,12 +213,9 @@ body {
 }
 
 .annotation.active {
-	-webkit-transform: translate(0, -50%) scale(1);
-	    -ms-transform: translate(0, -50%) scale(1);
-	        transform: translate(0, -50%) scale(1);
-	-webkit-transform-origin: center right;
-	    -ms-transform-origin: center right;
-	        transform-origin: center right;
+	-webkit-transform: translate(0, 0) scale(1);
+	    -ms-transform: translate(0, 0) scale(1);
+	        transform: translate(0, 0) scale(1);
 	padding: 1rem;
 }
 
