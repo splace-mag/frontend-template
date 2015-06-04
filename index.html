@@ -119,7 +119,7 @@
 	</article>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 	<script>
-		$('.annotation').on('touchend', function(e){
+		$('.annotation').on('touchend click', function(e){
 			var that = this;
 			e.preventDefault();
 			$('.annotation').each(function() {
@@ -135,7 +135,7 @@
 					$('body').removeClass('annotation-active');
 				}
 			});
-			$('.annotation-active .paragraph').on('touchend', function() {
+			$('.annotation-active .paragraph').on('touchend click', function() {
 				$('.annotation-active').removeClass('annotation-active');
 				$('.annotation.active').removeClass('active');
 			});
