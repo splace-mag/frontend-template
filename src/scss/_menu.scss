@@ -1,0 +1,165 @@
+.splace-menu {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.splace-footer {
+	background: #000;
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	position: relative;
+	font-size: 13px;
+	font-weight: bold;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.splace-issue-selection {
+	text-align: center;
+	border-right: 1px solid #fff;
+	position: relative;
+	display: inline-block;
+	width: 100px;
+
+	&.active > .splace-issue-selection__list {
+		bottom: 40px;
+	}
+}
+
+.splace-issue-selection__current {
+	padding: 0 15px;
+	position: relative;
+}
+
+.splace-issue-selection__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 99px;
+	background-color: #000;
+	position: fixed;
+	bottom: -100%;
+	transition: bottom .3s ease;
+
+	> li {
+		height: 40px;
+		> a {
+			display: block;
+			color: #fff;
+			text-decoration: none;
+		}
+	}
+}
+
+.splace-navigation-trigger {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 100px;
+	padding-left: 15px
+}
+
+.splace-footer-links {
+	display: inline-block;
+	height: 40px;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+.splace-footer-links__item {
+	border-right: 1px solid #fff;
+	padding: 0 10px;
+	display: inline-block;
+	min-width: 40px;
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+
+	> a {
+		color: #fff;
+		text-decoration: none;
+		min-width: 25px;
+		font-size: 16px;
+		display: inline-block;
+	}
+
+	&:last-child {
+		border-right: 0;
+	}
+}
+
+.splace-navigation {
+	height: 80px;
+	background: rgba(255, 255, 255, .8);
+	color: #000;
+	position: relative;
+	bottom: -80px;
+	transition: bottom .3s ease;
+
+	&.active {
+		bottom: 0px !important;
+	}
+}
+
+.splace-navigation__prev,
+.splace-navigation__next {
+	width: 50px;
+	height: 80px;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	font-size: 36px;
+	color: #000;
+	text-decoration: none;
+	padding-top: 20px;
+}
+.splace-navigation__prev {
+	left: 0;
+}
+.splace-navigation__next {
+	right: 0;
+}
+
+.splace-navigation__list-wrapper {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 80px;
+	width: 88%;
+	margin: 0 6%;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+.splace-navigation__list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 5000px;
+}
+
+.spalce-navigation-item {
+	display: inline-block;
+	float: left;
+	height: 80px;
+	padding: 15px 30px;
+	text-align: center;
+
+	> a {
+		display: block;
+		color: #000;
+		text-decoration: none;
+	}
+}
+.splace-navigation-item__subtitle {
+	font-size: 12px;
+	display: block;
+	text-transform: uppercase;
+}
+.splace-navigation-item__title {
+	font-weight: bold;
+}

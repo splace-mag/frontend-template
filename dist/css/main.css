@@ -373,6 +373,46 @@ th {
   font-weight: 600;
   font-style: normal; }
 
+@font-face {
+  font-family: 'iconfont';
+  src: url("../../assets/fonts/iconfont.eot?-z2of6j");
+  src: url("../../assets/fonts/iconfont.eot?#iefix-z2of6j") format("embedded-opentype"), url("../../assets/fonts/iconfont.ttf?-z2of6j") format("truetype"), url("../../assets/fonts/iconfont.woff?-z2of6j") format("woff"), url("../../assets/fonts/iconfont.svg?-z2of6j#iconfont") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'iconfont';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-chevron-left:before {
+  content: "\f053"; }
+
+.icon-chevron-right:before {
+  content: "\f054"; }
+
+.icon-facebook:before {
+  content: "\f09a"; }
+
+.icon-mail:before {
+  content: "\f0e0"; }
+
+.icon-angle-left:before {
+  content: "\f104"; }
+
+.icon-angle-right:before {
+  content: "\f105"; }
+
+.icon-vimeo:before {
+  content: "\ea9c"; }
+
 body {
   background-color: white;
   font-size: 16px;
@@ -399,3 +439,146 @@ body {
     font-size: 36px;
     color: #999;
     display: block; }
+
+.splace-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; }
+
+.splace-footer {
+  background: #000;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  position: relative;
+  font-size: 13px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase; }
+
+.splace-issue-selection {
+  text-align: center;
+  border-right: 1px solid #fff;
+  position: relative;
+  display: inline-block;
+  width: 100px; }
+  .splace-issue-selection.active > .splace-issue-selection__list {
+    bottom: 40px; }
+
+.splace-issue-selection__current {
+  padding: 0 15px;
+  position: relative; }
+
+.splace-issue-selection__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 99px;
+  background-color: #000;
+  position: fixed;
+  bottom: -100%;
+  -webkit-transition: bottom 0.3s ease;
+          transition: bottom 0.3s ease; }
+  .splace-issue-selection__list > li {
+    height: 40px; }
+    .splace-issue-selection__list > li > a {
+      display: block;
+      color: #fff;
+      text-decoration: none; }
+
+.splace-navigation-trigger {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 100px;
+  padding-left: 15px; }
+
+.splace-footer-links {
+  display: inline-block;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  right: 0; }
+
+.splace-footer-links__item {
+  border-right: 1px solid #fff;
+  padding: 0 10px;
+  display: inline-block;
+  min-width: 40px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none; }
+  .splace-footer-links__item > a {
+    color: #fff;
+    text-decoration: none;
+    min-width: 25px;
+    font-size: 16px;
+    display: inline-block; }
+  .splace-footer-links__item:last-child {
+    border-right: 0; }
+
+.splace-navigation {
+  height: 80px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+  position: relative;
+  bottom: -80px;
+  -webkit-transition: bottom 0.3s ease;
+          transition: bottom 0.3s ease; }
+  .splace-navigation.active {
+    bottom: 0px !important; }
+
+.splace-navigation__prev,
+.splace-navigation__next {
+  width: 50px;
+  height: 80px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  font-size: 36px;
+  color: #000;
+  text-decoration: none;
+  padding-top: 20px; }
+
+.splace-navigation__prev {
+  left: 0; }
+
+.splace-navigation__next {
+  right: 0; }
+
+.splace-navigation__list-wrapper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 80px;
+  width: 88%;
+  margin: 0 6%;
+  overflow-y: hidden;
+  overflow-x: auto; }
+
+.splace-navigation__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 5000px; }
+
+.spalce-navigation-item {
+  display: inline-block;
+  float: left;
+  height: 80px;
+  padding: 15px 30px;
+  text-align: center; }
+  .spalce-navigation-item > a {
+    display: block;
+    color: #000;
+    text-decoration: none; }
+
+.splace-navigation-item__subtitle {
+  font-size: 12px;
+  display: block;
+  text-transform: uppercase; }
+
+.splace-navigation-item__title {
+  font-weight: bold; }
