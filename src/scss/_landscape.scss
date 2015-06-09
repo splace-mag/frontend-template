@@ -2,6 +2,21 @@
 	min-height: 100vh;
 	min-width: 100vw;
 	position: relative;
+	transition: left .5s ease, right .5s ease;
+
+	&.left {
+		left: 0vw;
+		&.move-out {
+			left: 100vw;
+		}
+	}
+	&.right {
+		right: 0vw;
+
+		&.move-out {
+			right: 100vw;
+		}
+	}
 
 	&:after {
 		content: 'LANDSCAPE MODE';

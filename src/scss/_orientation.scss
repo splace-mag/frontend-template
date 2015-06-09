@@ -1,7 +1,45 @@
 
-.splace-orientation--portrait > .splace-landscape {
+.splace-orientation--portrait > .splace-landscape,
+.splace-orientation--portrait > .splace-landscape-next {
 	display: none;
 }
-.splace-orientation--landscape > .splace-portrait {
+.splace-orientation--landscape > .splace-portrait,
+.splace-orientation--landscape > .splace-portrait-next {
 	display: none;
+}
+
+.splace-portrait-next,
+.splace-landscape-next {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	transition: all .5s ease;
+	z-index: 50;
+	text-align: justify;
+
+	&.left {
+		left: -100%;
+		&.move-in {
+			left: 0vw;
+		}
+	}
+	&.right {
+		right: -100%;
+
+		&.move-in {
+			right: 0vw;
+		}
+	}
+
+	&:after {
+		content: 'Laden...';
+		font-size: 36px;
+		display: block;
+		position: absolute;
+		width: 100vw;
+		text-align: center;
+		top: 50vh;
+		left: 0;
+	}
 }
