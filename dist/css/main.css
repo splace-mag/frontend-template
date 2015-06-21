@@ -421,6 +421,26 @@ body {
 * {
   box-sizing: border-box; }
 
+/* ====== media ====== */
+.media {
+  margin: 10px; }
+
+.media, .bd {
+  overflow: hidden;
+  _overflow: visible;
+  zoom: 1; }
+
+.media .img {
+  float: left;
+  margin-right: 10px; }
+
+.media .img img {
+  display: block; }
+
+.media .imgExt {
+  float: right;
+  margin-left: 10px; }
+
 .splace-orientation--portrait > .splace-landscape,
 .splace-orientation--portrait > .splace-landscape-next {
   display: none; }
@@ -467,7 +487,8 @@ body {
   width: 100%;
   position: relative;
   -webkit-transition: left 0.5s ease, right 0.5s ease;
-          transition: left 0.5s ease, right 0.5s ease; }
+          transition: left 0.5s ease, right 0.5s ease;
+  padding-bottom: 40px; }
   .splace-portrait.left {
     left: 0vw; }
     .splace-portrait.left.move-out {
@@ -536,6 +557,131 @@ body {
   color: #fff;
   right: 10%;
   bottom: 20%; }
+
+.splace-paragraph {
+  width: 100%;
+  position: relative;
+  font-family: 'Circular'; }
+
+.splace-paragraph:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.splace-paragraph {
+  display: inline-block; }
+
+/* start commented backslash hack \*/
+* html .splace-paragraph {
+  height: 1%; }
+
+.splace-paragraph {
+  display: block; }
+
+/* close commented backslash hack */
+.splace-paragraph__text {
+  display: block;
+  width: 66%;
+  padding: 1rem 1rem 1rem 2rem;
+  margin: 0;
+  margin-left: 6%;
+  -webkit-transition: all 0.7s ease;
+          transition: all 0.7s ease;
+  -webkit-transform-origin: top left;
+      -ms-transform-origin: top left;
+          transform-origin: top left;
+  z-index: 1;
+  position: relative;
+  float: left; }
+
+.splace-paragraph__annotation {
+  float: left;
+  width: 40%;
+  padding: 1rem;
+  margin: 0 1rem;
+  position: absolute;
+  right: 5%;
+  top: 2rem;
+  -webkit-transition: all 0.7s ease;
+          transition: all 0.7s ease;
+  -webkit-transform: translate(0, 0) scale(0.5);
+      -ms-transform: translate(0, 0) scale(0.5);
+          transform: translate(0, 0) scale(0.5);
+  -webkit-transform-origin: top right;
+      -ms-transform-origin: top right;
+          transform-origin: top right;
+  background-color: #fff !important;
+  z-index: 2;
+  color: #09909f; }
+
+.splace-paragraph__comments {
+  background-image: url("../../assets/comment-02.svg");
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  background-repeat: no-repeat;
+  left: 3%;
+  top: 2.9rem; }
+  .splace-paragraph__comments:after {
+    content: attr(data-comment-count);
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    display: block;
+    font-size: 20px;
+    color: #09909f; }
+
+.splace-paragraph__comment {
+  display: none;
+  opacity: 0;
+  -webkit-transition: .7s opacity ease;
+          transition: .7s opacity ease; }
+  .splace-paragraph__comment img {
+    width: 32px; }
+  .splace-paragraph__comment:first-child {
+    margin-top: 3rem; }
+  .splace-paragraph__comment .media {
+    margin-left: 0; }
+
+.splace-paragraph__comment-author {
+  font-weight: 600; }
+
+.splace-paragraph__text--heading {
+  width: 90%;
+  padding-top: 2rem;
+  padding-bottom: 0;
+  font-size: 1.7rem;
+  line-height: 1.3em;
+  color: #09909f;
+  font-weight: 600;
+  margin-bottom: 0; }
+
+.splace-paragraph--annotation-active > .splace-paragraph__text:not(.splace-paragraph__text--heading) {
+  opacity: 0.5;
+  -webkit-transform: scale(0.65);
+      -ms-transform: scale(0.65);
+          transform: scale(0.65); }
+
+.splace-paragraph--annotation-active > .splace-paragraph__annotation {
+  -webkit-transform: translate(0, 0) scale(1);
+      -ms-transform: translate(0, 0) scale(1);
+          transform: translate(0, 0) scale(1); }
+
+.splace-paragraph--comments-active > .splace-paragraph__text:not(.splace-paragraph__text--heading) {
+  opacity: 0.5;
+  -webkit-transform: scale(0.5) translateX(90%);
+      -ms-transform: scale(0.5) translateX(90%);
+          transform: scale(0.5) translateX(90%); }
+
+.splace-paragraph--comments-active > .splace-paragraph__comments {
+  width: 30%; }
+
+.splace-paragraph--comments-active .splace-paragraph__comment {
+  display: block;
+  opacity: 1; }
 
 .splace-landscape {
   min-height: 100vh;

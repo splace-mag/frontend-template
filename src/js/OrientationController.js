@@ -8,7 +8,8 @@ the orientation specific class at the body element.
 
 var splaceOrientationController = (function($) {
 
-	var activeOrientation = 'portrait';
+	var activeOrientation = 'portrait',
+		callbacks = [];
 
 	function getActiveOrientation() {
 		return activeOrientation;
@@ -26,10 +27,22 @@ var splaceOrientationController = (function($) {
 
 	function checkOrientation() {
 		if(window.innerHeight > window.innerWidth){
-		    setActiveOrientation('portrait')
+		    setActiveOrientation('portrait');
+		    notifyListeners('portrait');
 		} else {
-			setActiveOrientation('landscape')
+			setActiveOrientation('landscape');
+			notifyListeners('landscape');
 		}
+	}
+
+	function setCallback(callback) {
+		callbacks.push(callback);
+	}
+
+	function notifyListeners(orientation) {
+		for(var i in callbacks) {
+			callbacks[i](orientation);
+		} 
 	}
 
 	function initOrientationWatcher() {
@@ -42,6 +55,7 @@ var splaceOrientationController = (function($) {
 
 	return {
 		init: initOrientationWatcher,
-		getOrientation: getActiveOrientation
+		getOrientation: getActiveOrientation,
+		setCallback: setCallback
 	}
 })(jQuery);

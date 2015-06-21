@@ -3,6 +3,7 @@
 	width: 100%;
 	position: relative;
 	transition: left .5s ease, right .5s ease;
+	padding-bottom: 40px;
 
 	&.left {
 		left: 0vw;
@@ -85,3 +86,128 @@
 	right: 10%;
 	bottom: 20%;
 }
+
+.splace-paragraph {
+	width: 100%;
+	position: relative;
+	font-family: 'Circular';
+}
+
+.splace-paragraph:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.splace-paragraph { display: inline-block; }
+/* start commented backslash hack \*/
+* html .splace-paragraph { height: 1%; }
+.splace-paragraph { display: block; }
+/* close commented backslash hack */
+
+.splace-paragraph__text {
+	display: block;
+	width: 66%;
+	padding: 1rem 1rem 1rem 2rem;
+	margin: 0;
+	margin-left: 6%;
+	transition: all 0.7s ease;
+	transform-origin: top left;
+	z-index: 1;
+	position: relative;
+	float: left;
+}
+
+.splace-paragraph__annotation {
+	float: left;
+	width: 40%;
+	padding: 1rem;
+	margin: 0 1rem;
+	position: absolute;
+	right: 5%;
+	top: 2rem;
+	transition: all 0.7s ease;
+	transform: translate(0, 0) scale(0.5);
+	transform-origin: top right;
+	background-color: #fff !important;
+	z-index: 2;
+	color: #09909f;
+}
+
+.splace-paragraph__comments {
+	background-image: url('../../assets/comment-02.svg');
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	background-repeat: no-repeat;
+	left: 3%;
+	top: 2.9rem;
+
+	&:after {
+		content: attr(data-comment-count);
+		position: absolute;
+		top: 50%;
+		left: 15px;
+		display: block;
+		font-size: 20px;
+		color: #09909f;
+
+	}
+}
+
+.splace-paragraph__comment {
+	display: none;
+	opacity: 0;
+	transition: .7s opacity ease;
+
+	img {
+		width: 32px;
+	}
+
+	&:first-child {
+		margin-top: 3rem;
+	}
+
+	.media {
+		margin-left: 0;
+	}
+}
+
+.splace-paragraph__comment-author {
+	font-weight: 600;
+}
+
+.splace-paragraph__text--heading {
+	width: 90%;
+	padding-top: 2rem;
+	padding-bottom: 0;
+	font-size: 1.7rem;
+	line-height: 1.3em;
+	color: #09909f;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.splace-paragraph--annotation-active > .splace-paragraph__text:not(.splace-paragraph__text--heading) {
+	opacity: 0.5;
+	transform: scale(0.65);
+}
+.splace-paragraph--annotation-active > .splace-paragraph__annotation {
+	transform: translate(0, 0) scale(1);	
+}
+
+.splace-paragraph--comments-active > .splace-paragraph__text:not(.splace-paragraph__text--heading) {
+	opacity: 0.5;
+	transform: scale(0.5) translateX(90%);
+}
+
+.splace-paragraph--comments-active > .splace-paragraph__comments {
+	width: 30%;
+}
+.splace-paragraph--comments-active .splace-paragraph__comment {
+	display: block;
+	opacity: 1;
+}
+

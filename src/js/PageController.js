@@ -31,6 +31,7 @@ var splacePageController = (function($) {
 			$current.remove();
 			$('.splace-portrait-next').addClass('splace-portrait').removeClass('splace-portrait-next').removeClass('left').removeClass('right').removeClass('move-in');
 			$('.splace-landscape-next').addClass('splace-landscape').removeClass('splace-landscape-next').removeClass('left').removeClass('right').removeClass('move-in');
+			initGesture();
 		}, 510);
 	}
 
@@ -48,6 +49,7 @@ var splacePageController = (function($) {
       	mkup.filter('title'), url);
 
     	$('.portrait[data-url="'+url+'"]').append($(content).filter('.splace-portrait').children());
+    	adjustHead();
 	}
 
 	//Creates an empty div container
@@ -76,6 +78,16 @@ var splacePageController = (function($) {
 					window.location.href = url;
 				});
 		//}
+	}
+
+	function adjustHead() {
+		$('.splace-article-header').css('height', window.innerHeight-40);
+	}
+
+	function orientationChanged(orientation) {
+		if(orientation === 'portrait') {
+			adjustHead();
+		}
 	}
 
 	function getPageIndex(url) {
@@ -162,14 +174,20 @@ var splacePageController = (function($) {
 	}
 
 	function initGesture() {
-		var myElement = document.querySelector('body');
+		var portrait = document.querySelector('.splace-portrait');
+		var landscape = document.querySelector('.splace-landscape');
 
-		// create a simple instance
-		// by default, it only adds horizontal recognizers
-		var mc = new Hammer(myElement);
+		var mcPortrait = new Hammer(portrait);
+		var mcLandscape = new Hammer(landscape);
 
-		// listen to events...
-		mc.on("swipeleft swiperight", function(ev) {
+		mcPortrait.on("swipeleft swiperight", function(ev) {
+		    if(ev.type === 'swipeleft') {
+		    	next();
+		    } else {
+		    	prev();
+		    }
+		});
+		mcLandscape.on("swipeleft swiperight", function(ev) {
 		    if(ev.type === 'swipeleft') {
 		    	next();
 		    } else {
@@ -178,12 +196,64 @@ var splacePageController = (function($) {
 		});
 	}
 
+	function setNothingActive() {
+		$('.splace-paragraph').removeClass('splace-paragraph--annotation-active');
+		$('.splace-paragraph').removeClass('splace-paragraph--comments-active');
+	}
+
+	function annotationClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if($('.splace-paragraph--annotation-active').length > 0) {
+			setNothingActive()
+		} else {
+			setNothingActive();
+			$('.splace-paragraph').addClass('splace-paragraph--annotation-active');
+		}
+	}
+	function commentClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if($('.splace-paragraph--comments-active').length > 0) {
+			setNothingActive();
+		} else {
+			setNothingActive();
+			$('.splace-paragraph').addClass('splace-paragraph--comments-active');
+		}
+	}
+	function textClick(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if($('.splace-paragraph--annotation-active').length > 0) {
+			$('.splace-paragraph').removeClass('splace-paragraph--annotation-active');
+		}
+		if($('.splace-paragraph--comments-active').length > 0) {
+			$('.splace-paragraph').removeClass('splace-paragraph--comments-active');
+		}
+	}
+
+	function initClickListener() {
+
+		$('body').on('click, touchend', '.splace-paragraph__annotation', annotationClick);
+		$('body').on('click, touchend', '.splace-paragraph__comments', commentClick);
+		$('body').on('click, touchend', '.splace-paragraph__text', textClick);
+	}
+
 	function init() {
 
-		orientationController = splaceOrientationController.init();
+		splaceOrientationController.init();
 		menuController = splaceMenuController.init();
 		initLocation();
 		initGesture();
+		initClickListener();
+
+		splaceOrientationController.setCallback(orientationChanged);
+		$(function() {
+			adjustHead();
+		});
 	}
 
 	init();
