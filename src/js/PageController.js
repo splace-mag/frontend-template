@@ -14,6 +14,9 @@ var splacePageController = (function($) {
 	function movePage(direction) {
 		var $next = $('.splace-portrait-next, .splace-landscape-next');
 		var $current = $('.splace-portrait, .splace-landscape');
+
+		$next.find('.splace-article-header').css('top', document.body.scrollTop);
+
 		if(direction === 'right') {
 			$next.removeClass('left').addClass('right');
 			$current.addClass('right');
@@ -29,6 +32,7 @@ var splacePageController = (function($) {
 
 		window.setTimeout(function() {
 			$current.remove();
+			window.scrollTo(0, 0);
 			$('.splace-portrait-next').addClass('splace-portrait').removeClass('splace-portrait-next').removeClass('left').removeClass('right').removeClass('move-in');
 			$('.splace-landscape-next').addClass('splace-landscape').removeClass('splace-landscape-next').removeClass('left').removeClass('right').removeClass('move-in');
 			initGesture();

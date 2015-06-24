@@ -59,6 +59,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+.icon-vimeo:before {
+    content: "\ea9c";
+}
 .icon-chevron-left:before {
     content: "\f053";
 }
@@ -77,6 +81,9 @@
 .icon-angle-right:before {
     content: "\f105";
 }
-.icon-vimeo:before {
-    content: "\ea9c";
+.icon-new-tab:before {
+    content: "\e47d";
+}
+.icon-twitter:before {
+    content: "\ea91";
 }
