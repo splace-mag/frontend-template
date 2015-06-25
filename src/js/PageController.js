@@ -198,6 +198,20 @@ var splacePageController = (function($) {
 		    	prev();
 		    }
 		});
+
+		/*$('body').on('click, touchend', '.splace-paragraph__annotation', annotationClick);
+		$('body').on('click, touchend', '.splace-paragraph__comments', commentClick);
+		$('body').on('click, touchend', '.splace-paragraph__text', textClick);
+*/
+		$('.splace-paragraph__text').hammer().bind("tap", function(e) {
+		    textClick();
+		});
+		$('.splace-paragraph__comments').hammer().bind("tap", function(e) {
+		    commentClick();
+		});
+		$('.splace-paragraph__annotation').hammer().bind("tap", function(e) {
+		    annotationClick();
+		});
 	}
 
 	function setNothingActive() {
@@ -206,8 +220,8 @@ var splacePageController = (function($) {
 	}
 
 	function annotationClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+		//e.preventDefault();
+		//e.stopPropagation();
 
 		if($('.splace-paragraph--annotation-active').length > 0) {
 			setNothingActive()
@@ -217,8 +231,8 @@ var splacePageController = (function($) {
 		}
 	}
 	function commentClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+		//e.preventDefault();
+		//e.stopPropagation();
 
 		if($('.splace-paragraph--comments-active').length > 0) {
 			setNothingActive();
@@ -228,8 +242,8 @@ var splacePageController = (function($) {
 		}
 	}
 	function textClick(e) {
-		e.preventDefault();
-		e.stopPropagation();
+		//e.preventDefault();
+		//e.stopPropagation();
 
 		if($('.splace-paragraph--annotation-active').length > 0) {
 			$('.splace-paragraph').removeClass('splace-paragraph--annotation-active');
@@ -252,7 +266,7 @@ var splacePageController = (function($) {
 		menuController = splaceMenuController.init();
 		initLocation();
 		initGesture();
-		initClickListener();
+		//initClickListener();
 
 		splaceOrientationController.setCallback(orientationChanged);
 		$(function() {
