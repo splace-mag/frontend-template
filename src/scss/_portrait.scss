@@ -41,24 +41,25 @@
 		color: #fff;
 		position: absolute;
 		z-index: 100;
-		font-size: 52px;
-		text-align: center;
-		width: 70%;
-		border: 7px solid #fff;
-		padding: 1rem;
-		line-height: 1.5;
+		font-size: 3.25rem;
+		text-align: left;
+		width: 90%;
+		//border: 7px solid #fff;
+		text-decoration: underline;
+		padding: 3rem;
+		line-height: 4.6rem;
 	}
 
 	> h2 {
-		background: #fff;
+		background: rgba(255,255,255,.2);
 		padding: 1.5rem;
-		color: #333;
+		color: #fff;
 		text-align: center;
 		position: absolute;
 		z-index: 110;
 		width: 50%;
-		font-size: 32px;
-		line-height: 1.5;
+		font-size: 1.3rem;
+		line-height: 2rem;
 	}
 
 	> img {
@@ -71,7 +72,7 @@
 .splace-article-header__marker {
 	position: relative;
 	font-family: 'Circular';
-	font-size: 1rem;
+	font-size: .8rem;
 	padding: 1rem;
 	font-weight: 600;
 	z-index: 4;
@@ -141,6 +142,7 @@
 	position: relative;
 	float: left;
 	font-size: 1.1rem;
+	line-height: 1.5rem;
 }
 
 .splace-paragraph__annotation {
@@ -150,13 +152,35 @@
 	margin: 0 1rem;
 	position: absolute;
 	right: 5%;
-	top: 0rem;
+	top: 1rem;
 	transition: all 0.7s ease;
 	transform: translate(0, 0) scale(0.5);
 	transform-origin: top right;
 	background-color: #fff !important;
 	z-index: 2;
-	color: #09909f;
+	color: rgba(0, 0, 0, .5);
+	font-style: italic;
+
+	&:before {
+		content: '_';
+		position: relative;
+		top: 10px;
+	}
+}
+
+.splace-paragraph__annotation-gallery > a {
+	display: none;
+	width: auto;
+	max-width: 100%;
+
+	&:first-child {
+		display: block;
+	}
+
+	> img {
+		display: block;
+		width: 100%;
+	}
 }
 
 .splace-paragraph__comments {
@@ -168,6 +192,7 @@
 	left: 0%;
 	top: 2.9rem;
 	padding: 2rem;
+	transition: all 0.7s ease;
 
 	&:after {
 		content: attr(data-comment-count);
@@ -184,6 +209,7 @@
 .splace-paragraph__comment {
 	display: block;
 	opacity: 1;
+	font-size: 1.125rem;
 	transition: .7s all ease;
 	transform: translateX(-300px);
 
@@ -209,8 +235,8 @@
 	width: 90%;
 	padding-top: 2rem;
 	padding-bottom: 0;
-	font-size: 1.7rem;
-	line-height: 1.3em;
+	font-size: 1.3rem;
+	line-height: 1.4em;
 	color: #09909f;
 	font-weight: 600;
 	margin-bottom: 0;
@@ -237,6 +263,7 @@
 		text-transform: uppercase;
 		display: block;
 		margin-bottom: 1rem;
+		font-size: .8rem;
 	}
 	> a {
 		width: 2.5rem;
@@ -262,6 +289,8 @@
 		text-transform: uppercase;
 		margin-bottom: .5rem;
 		display: block;
+		text-decoration: underline;
+		font-weight: 600;
 	}
 
 	> a {
@@ -307,27 +336,32 @@
 	}
 }
 
-.splace-paragraph--annotation-active > .splace-paragraph__text:not(.splace-paragraph__text--heading) {
+.splace-paragraph--annotation-active .splace-paragraph__text:not(.splace-paragraph__text--heading) {
 	opacity: 0.5;
-	transform: scale(0.65);
+	transform: translateX(-50%);
+}
+.splace-paragraph--annotation-active .splace-paragraph__comments {
+	transform: translateX(-100%);
 }
 .splace-paragraph--annotation-active > .splace-paragraph__annotation {
 	transform: translate(0, 0) scale(1);	
+	z-index: 400;
+	color: rgba(0, 0, 0, 1);
 }
 
-.splace-paragraph--comments-active > .splace-paragraph__text:not(.splace-paragraph__text--heading) {
+
+.splace-paragraph--comments-active .splace-paragraph__text:not(.splace-paragraph__text--heading) {
 	opacity: 0.5;
-	//transform: scale(0.5) translateX(90%);
 	transform: translateX(55%) scale(0.8);
 }
-.splace-paragraph--comments-active > .splace-paragraph__annotation {
+.splace-paragraph--comments-active .splace-paragraph__annotation {
 	transform: translate(60%, 0) scale(0.5);
 }
 
 .splace-paragraph--comments-active > .splace-paragraph__comments {
 	width: 45%;
 }
-.splace-paragraph--comments-active .splace-paragraph__comment {
+.splace-paragraph--comments-active > .splace-paragraph__comments > .splace-paragraph__comment {
 	transform: translateX(0px);
 }
 
