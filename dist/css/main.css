@@ -498,6 +498,32 @@ body {
     width: 100vw;
     z-index: 9; }
 
+.desktop {
+  width: 768px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  position: relative; }
+  .desktop:before {
+    content: '';
+    width: 100vw;
+    left: -100vw;
+    height: 100%;
+    display: block;
+    background: #eee;
+    position: absolute;
+    z-index: 400;
+    top: 0; }
+  .desktop:after {
+    content: '';
+    width: 100vw;
+    right: -100vw;
+    height: 100%;
+    display: block;
+    background: #eee;
+    position: absolute;
+    z-index: 400;
+    top: 0; }
+
 .splace-portrait {
   min-height: 100vh;
   width: 100%;
