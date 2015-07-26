@@ -30,12 +30,23 @@
 	}
 }
 
+.splace-external-links__wrapper {
+	text-align: center;
+	position: relative;
+	display: inline-block;
+
+	&.active > .splace-external-links__list {
+		bottom: 40px;
+	}
+}
+
 .splace-issue-selection__current {
 	padding: 0 15px;
 	position: relative;
 }
 
-.splace-issue-selection__list {
+.splace-issue-selection__list,
+.splace-external-links__list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -51,6 +62,19 @@
 			display: block;
 			color: #fff;
 			text-decoration: none;
+		}
+	}
+}
+
+.splace-external-links__list {
+	width: 87px;
+	right: 0;
+
+	> li {
+		display: inline-block;
+	
+		> a {
+			padding: .3rem;
 		}
 	}
 }
