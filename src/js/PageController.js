@@ -231,6 +231,7 @@ var splacePageController = (function($) {
 		$('.splace-paragraph').removeClass('splace-paragraph--annotation-active');
 		$('.splace-paragraph').removeClass('splace-paragraph--comments-active');
 		$('body').removeClass('splace-paragraph--annotation-active');
+		$('body').removeClass('splace-paragraph--comments-active');
 	}
 
 	function annotationClick(e) {

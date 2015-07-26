@@ -24,6 +24,8 @@
 	height: 99vh;
 	height: calc(100vh - 40px);
 	position: relative;
+	width: 100%;
+	overflow: hidden;
 
 	&:after {
 		content: '';
@@ -183,6 +185,13 @@
 	}
 }
 
+.splace-paragraph__annotation-heading {
+	font-size: 2.2rem;
+}
+.splace-paragraph__annotation-text {
+	font-size: 1.8rem;
+}
+
 .splace-paragraph__comments {
 	background-image: url('../../assets/comment-02.svg');
 	width: 20px;
@@ -192,6 +201,7 @@
 	left: 0%;
 	top: 2.9rem;
 	padding: 2rem;
+	opacity: .5;
 	transition: all 0.7s ease;
 
 	&:after {
@@ -212,6 +222,7 @@
 	font-size: 1.125rem;
 	transition: .7s all ease;
 	transform: translateX(-300px);
+	min-width: 250px;
 
 	img {
 		width: 32px;
@@ -360,8 +371,114 @@
 
 .splace-paragraph--comments-active > .splace-paragraph__comments {
 	width: 45%;
+	opacity: 1;
 }
 .splace-paragraph--comments-active > .splace-paragraph__comments > .splace-paragraph__comment {
 	transform: translateX(0px);
 }
+
+/* HELP PAGE */
+
+.splace-article-header__help-row {
+	height: 7.8vh;
+	width: 80%;
+	margin: 1.5vh 0 0 20%;
+	position: relative;
+	z-index: 100;
+	font-size: 1.5rem;
+	color: rgba(255, 255, 255, .7);
+
+	> svg {
+		height: 7.7vh;
+		max-width: 20%;
+		margin-left: 1%;
+	}
+
+	> span {
+		position: absolute;
+		left: 15%;
+		bottom:0;
+	}
+
+	b {
+		font-weight: bold;
+		font-size: 3rem;
+		color: #fff;
+	}
+
+
+	&:first-child {
+		margin-top: 2vh;
+	}
+
+	&:nth-child(3) {
+		margin-bottom: 4.68vh;
+	}
+
+	&:nth-child(6) {
+		margin-bottom: 6vh;
+	}
+
+	/** 
+	 * iPad with portrait orientation.
+	 */
+	@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+	  height: 1024px * 0.078;
+	  margin: 1024px * 0.015 0 0 20%;
+	
+		> svg {
+			height:  1024px * 0.077;
+		}
+
+	  &:first-child {
+		margin-top: 1024px * 0.02;
+		}
+
+		&:nth-child(3) {
+			margin-bottom: 1024px * 0.0468;
+		}
+
+		&:nth-child(6) {
+			margin-bottom: 1024px * 0.06;
+		}
+	}
+
+	/** 
+	 * iPad with landscape orientation.
+	 */
+	@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+	  height: 768px * 0.078;
+	  margin: 768px * 0.015 0 0 20%;
+
+	  > svg {
+			height:  768px * 0.077;
+		}
+
+	  &:first-child {
+		margin-top: 768px * 0.02;
+		}
+
+		&:nth-child(3) {
+			margin-bottom: 768px * 0.0468;
+		}
+
+		&:nth-child(6) {
+			margin-bottom: 768px * 0.06;
+		}
+	}
+	
+}
+
+.splace-help-box {
+	padding: 1rem;
+
+	> svg,
+	> object {
+		width: 50%;
+		margin: 0 auto;
+		display: block;
+	}
+}
+
+
 

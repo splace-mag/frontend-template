@@ -1,0 +1,14 @@
+.splace-grid-row {
+	
+	&.splace-grid-3 > .splace-grid-item {
+		width: (100% / 3);
+		float: left;
+		min-height: 1px;
+	}
+
+	&.splace-grid-2 > .splace-grid-item {
+		width: (100% / 2);
+		float: left;
+		min-height: 1px;
+	}
+}
