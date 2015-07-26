@@ -54,6 +54,13 @@ var splacePageController = (function($) {
 
     	$('.portrait[data-url="'+url+'"]').append($(content).filter('.splace-portrait').children());
     	adjustHead();
+  	
+  		if($(content).filter('.splace-portrait').children().find('.splace-article-header__help-wrapper').length > 0) {
+  			splaceOrientationController.setHelpSite(true);	
+  		} else {
+  			splaceOrientationController.setHelpSite(false);
+  		}
+    	
 	}
 
 	//Creates an empty div container

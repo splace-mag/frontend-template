@@ -16,6 +16,7 @@ var splaceOrientationController = (function($) {
 	}
 
 	function setActiveOrientation(mode) {
+
 		if(mode === 'landscape') {
 			$('body').removeClass('splace-orientation--portrait');
 			$('body').addClass('splace-orientation--landscape');
@@ -45,6 +46,14 @@ var splaceOrientationController = (function($) {
 		} 
 	}
 
+	function setHelpSite(active) {
+		if(active) {
+			setActiveOrientation('portrait');
+		} else {
+			checkOrientation();
+		}
+	}
+
 	function initOrientationWatcher() {
 		
 		window.addEventListener("resize", function() {
@@ -56,6 +65,7 @@ var splaceOrientationController = (function($) {
 	return {
 		init: initOrientationWatcher,
 		getOrientation: getActiveOrientation,
-		setCallback: setCallback
+		setCallback: setCallback,
+		setHelpSite: setHelpSite
 	}
 })(jQuery);
