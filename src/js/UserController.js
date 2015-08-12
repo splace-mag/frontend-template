@@ -201,3 +201,30 @@ var splaceUserController = (function() {
 	}
 
 })();
+
+var splaceUserActionController = (function() {
+
+	var visible = false;
+	var userInterface;
+
+	function toggleUserInterface(e) {
+		e.preventDefault();
+
+		if(visible) {
+			userInterface.removeClass('active');
+		} else {
+			userInterface.addClass('active');
+		}
+		visible = !visible;
+
+	}
+
+	function init() {
+
+		userInterface = $('.splace-user');
+		$('.splace-user__trigger, .splace-user__close').on('click', toggleUserInterface);
+	}
+
+	init();
+
+})();

@@ -14,3 +14,13 @@ body {
 .media .img {float:left; margin-right: 10px;}
 .media .img img{display:block;}
 .media .imgExt{float:right; margin-left: 10px;}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}

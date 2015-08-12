@@ -1,0 +1,163 @@
+.splace-user {
+	background: rgba(0, 0, 0, .8);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: -100%;
+	left: 0;
+	z-index: 5000;
+	padding: 0 10% 5rem 10%;
+	color: #fff;
+	overflow-y: auto;
+	transition: top ease .5s;
+
+	&.active {
+		top: 0;
+	}
+}
+
+.splace-user__close {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	color: #00909f;
+	font-weight: bold;
+	font-size: 2rem;
+}
+
+.splace-user__title {
+	width: 100%;
+	text-align: center;
+	margin-top: 1rem;
+	color: #fff;
+	display: block;
+}
+
+.splace-user__login-section,
+.splace-user__signup-section {
+
+	max-width: 768px;
+	margin: 0 auto;
+
+	> h2 {
+		font-weight: bold;
+		font-size: 2rem;
+	}
+
+	> p {
+		color: #ccc;
+		font-size: 1.4rem;
+		font-weight: bold;
+		margin-bottom: 3rem;
+	}
+}
+
+.splace-user__action-grid {
+	padding: 0 1.5rem;
+	margin-top: 1rem;
+
+	> .splace-grid-item {
+		padding: 0 1rem;
+		float: none;
+		width: 49.666%;
+		display: inline-block;
+	}
+}
+
+.splace-user__facebook-login {
+	background: #29589f;
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	padding: .5rem;
+	display: inline-block;
+
+	> i {
+		margin: 0 5px;
+	}
+}
+
+.splace-user__input-wrapper {
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.splace-user__input {
+	background: #fff;
+	border: 0;
+	display: block;
+	-webkit-appearance: none;
+	border-radius: 0;
+	width: 100%;
+	height: 3rem;
+	color: #000;
+	line-height: 4rem;
+}
+
+.splace-user__submit {
+	width: auto;
+	padding: 0 1rem;
+	height: 3rem;
+	-webkit-appearance: none;
+	border-radius: 0;
+	float: right;
+	background: #00909f;
+	font-weight: bold;
+	border: 0;
+}
+
+.splace-login__label {
+	position: absolute;
+	left: 10px;
+	top: 5px;
+	color: #444;
+	font-size: .8rem;
+	text-transform: uppercase;
+}
+
+.splace-user__forgot-password {
+	text-decoration: none;
+	color: #00909f;
+	line-height: 4rem;
+}
+
+.splace-user__line {
+	border-top: 1px solid #00909f;
+	height: 0;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.splace-user__file {
+	color: transparent;
+	width: 100%;
+	height: 3rem;
+}
+.splace-user__file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.splace-user__file::before {
+  content: 'Profilbild hochladen';
+  display: inline-block;
+  background: #fff;
+  padding: 0 10px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+  color: #00909f;
+  height: 3rem;
+  width: 100%;
+  line-height: 3rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.splace-user__file:hover::before {
+  border-color: black;
+}
+.splace-user__file:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
