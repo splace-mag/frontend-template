@@ -261,9 +261,9 @@ var splacePageController = (function($) {
 		//e.preventDefault();
 		//e.stopPropagation();
 		
-		if($('.splace-paragraph--annotation-active').length > 0) {
-			setNothingActive()
-		} else {
+		//if($('.splace-paragraph--annotation-active').length > 0) {
+		//	setNothingActive()
+		//} else {
 			setNothingActive();
 			var $target = $(e.target);
 
@@ -274,7 +274,7 @@ var splacePageController = (function($) {
 			$target.parents('.splace-paragraph').addClass('splace-paragraph--annotation-active');
 			$('body').addClass('splace-paragraph--annotation-active');
 			//$('.splace-paragraph').addClass('splace-paragraph--annotation-active');
-		}
+		//}
 	}
 	function commentClick(e) {
 		//e.preventDefault();
