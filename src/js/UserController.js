@@ -223,6 +223,11 @@ var splaceUserActionController = (function() {
 
 		userInterface = $('.splace-user');
 		$('.splace-user__trigger, .splace-user__close').on('click', toggleUserInterface);
+		$(document).keyup(function(e) {
+		     if (e.keyCode === 27 && visible) { 
+		        toggleUserInterface(e);
+		    }
+		});
 	}
 
 	init();

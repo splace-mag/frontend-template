@@ -422,6 +422,12 @@ th {
 .icon-external-link:before {
   content: "\f08e"; }
 
+html {
+  font-size: 16px; }
+  @media (max-width: 350px) {
+    html {
+      font-size: 10px; } }
+
 body {
   background-color: white;
   font-size: 16px;
@@ -540,7 +546,7 @@ body {
   position: relative;
   -webkit-transition: left 0.5s ease, right 0.5s ease;
           transition: left 0.5s ease, right 0.5s ease;
-  padding-bottom: 40px; }
+  padding-bottom: 100px; }
   .splace-portrait.left {
     left: 0vw; }
     .splace-portrait.left.move-out {
@@ -964,7 +970,7 @@ body {
     display: block; }
 
 .splace-user {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   width: 100%;
   height: 100%;
   position: fixed;
@@ -1105,6 +1111,61 @@ body {
 
 .splace-user__file:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); }
+
+.splace-index-wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-align-content: flex-start;
+      -ms-flex-line-pack: start;
+          align-content: flex-start; }
+
+.splace-index-item {
+  width: 33%;
+  color: #fff;
+  position: relative;
+  z-index: 100;
+  padding: 0 3% 50px 3%;
+  text-decoration: none;
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start; }
+
+.splace-index-item__number {
+  display: block;
+  text-align: center; }
+
+.splace-index-item__title {
+  padding-bottom: 0;
+  margin-bottom: .3rem;
+  text-decoration: underline;
+  line-height: 1.5;
+  font-size: 1.5rem; }
+
+.splace-index-item__subtitle {
+  margin-top: 0;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 1.2rem; }
+
+.splace-index-separator {
+  display: block;
+  width: 100%;
+  min-height: 1px; }
+
+.splace-index-item__centerfold-img {
+  position: absolute;
+  left: 90%;
+  width: 50%;
+  top: 13%; }
 
 .splace-menu {
   position: fixed;

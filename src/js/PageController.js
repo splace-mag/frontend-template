@@ -101,11 +101,27 @@ var splacePageController = (function($) {
 		        options = {
 		        	index: link, 
 		        	event: e,
-		        	titleElement: 'h3'
+		        	titleElement: 'h3',
+		        	youTubeClickToPlay: false
 		        },
 		        links = this.getElementsByTagName('a');
 		    blueimp.Gallery(links, options);
-		})
+		});
+
+		$('.splace-video').on('click', function(e) {
+			e.preventDefault();
+			var $target = $(e.target);
+			var data = {};
+
+			if($target.hasClass('splace-video__youtube')) {
+				data.href = $target.attr('href');
+				data.youtube = $target.data('youtube');
+				data.type = 'text/html';
+				data.poster = 'https://img.youtube.com/vi/'+data.youtube+'/maxresdefault.jpg';
+			}
+
+			blueimp.Gallery([data], {youTubeClickToPlay: false});
+		});
 	}
 
 	function orientationChanged(orientation) {
