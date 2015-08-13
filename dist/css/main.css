@@ -1167,6 +1167,57 @@ body {
   width: 50%;
   top: 13%; }
 
+.splace-editorial__heading {
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 0 5%;
+  position: relative;
+  z-index: 100;
+  text-decoration: underline;
+  line-height: 2.5rem;
+  margin-bottom: 50px; }
+
+.splace-editorial__small-col {
+  width: 25%;
+  float: left;
+  min-height: 1px;
+  padding: 0 1% 0 6%; }
+
+.splace-editorial__big-col {
+  width: 75%;
+  float: left;
+  min-height: 1px;
+  padding: 0 4%;
+  color: #fff;
+  position: relative;
+  z-index: 100; }
+  .splace-editorial__big-col > p {
+    font-size: 1.2rem;
+    margin: 0; }
+
+.splace-editorial__img {
+  width: auto;
+  max-width: 100%; }
+
+.splace-editorial__name {
+  color: #fff;
+  font-weight: bold;
+  display: block;
+  margin-top: 10px; }
+
+.splace-editorial__position {
+  color: #fff; }
+
+.splace-editorial__footer-info {
+  color: #fff;
+  padding: 0 4%;
+  font-style: italic;
+  width: 90%;
+  margin-top: 100px;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-bottom: 100px; }
+
 .splace-menu {
   position: fixed;
   bottom: 0;
