@@ -207,6 +207,30 @@ var splaceUserActionController = (function() {
 	var visible = false;
 	var userInterface;
 
+	function performLogin(e) {
+		e.preventDefault();
+
+		var email = $('#splace-login-email').val();
+		var password = $('#splace-login-password').val();
+
+		splaceUserController.signin(email, password, function(response) {
+
+			if(response.success) {
+				close();	
+				return;
+			}
+
+			$('.splace-user__login-form > h4').addClass('active');
+			
+		});
+
+	}
+
+	function close() {
+		userInterface.removeClass('active');
+		visible = false;
+	}
+
 	function toggleUserInterface(e) {
 		e.preventDefault();
 
@@ -221,13 +245,79 @@ var splaceUserActionController = (function() {
 
 	function init() {
 
-		userInterface = $('.splace-user');
-		$('.splace-user__trigger, .splace-user__close').on('click', toggleUserInterface);
+		userInterface = $('.splace-user__login-signup-modal');
+		$('.splace-user__trigger, .splace-user__login-signup-modal .splace-user__close').on('click', toggleUserInterface);
 		$(document).keyup(function(e) {
 		     if (e.keyCode === 27 && visible) { 
 		        toggleUserInterface(e);
 		    }
 		});
+
+		$('.splace-user__login-form').on('submit', performLogin);
+	}
+
+	init();
+
+	return {
+		close: close
+	}
+
+})();
+
+var splacePWResetActionController = (function() {
+
+	var visible = false;
+	var userInterface;
+
+	function resetPWRequest(e) {
+		e.preventDefault();
+
+		var email = $('.splace-user__pw-reset-form input[type="email"]').val();
+
+		if(email.length === 0) {
+			$('.splace-user__pw-reset-form h4').text("Bitte geben Sie eine gültige E-Mail Adresse ein.");
+			$('.splace-user__pw-reset-form h4').addClass('active');
+			return;
+		}
+
+		splaceUserController.sendResetMail(email, function(response) {
+			if(response.success) {
+				$('.splace-user__pw-reset-form').addClass('hidden');
+				$('.splace-user__pw-reset-success').addClass('active');
+			} else {
+				if(typeof response.error !== 'string') {
+					response.error = 'Bitte prüfen Sie Ihre Eingabe.';
+				}
+				$('.splace-user__pw-reset-form h4').text(response.error);
+				$('.splace-user__pw-reset-form h4').addClass('active');
+			}
+		});
+	}
+
+	function toggleUserInterface(e) {
+		e.preventDefault();
+
+		if(visible) {
+			userInterface.removeClass('active');
+		} else {
+			userInterface.addClass('active');
+			splaceUserActionController.close();
+		}
+		visible = !visible;
+
+	}
+
+	function init() {
+
+		userInterface = $('.splace-user__pw-reset-modal');
+		$('.splace-pw-reset__trigger, .splace-user__pw-reset-modal .splace-user__close').on('click', toggleUserInterface);
+		$(document).keyup(function(e) {
+		     if (e.keyCode === 27 && visible) { 
+		        toggleUserInterface(e);
+		    }
+		});
+
+		$('.splace-user__pw-reset-form').on('submit', resetPWRequest);
 	}
 
 	init();

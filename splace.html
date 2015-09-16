@@ -314,7 +314,7 @@
 		</div>
 	</div>
 
-	<div class="splace-user">
+	<div class="splace-user splace-user__login-signup-modal">
 		<span class="splace-user__title">Anmelden / Registrieren</span>
 		<span class="splace-user__close">x</span>
 
@@ -324,12 +324,14 @@
 				Um Artikel zu kommentieren müssen Sie registriert sein. Nur Kommentare von angemeldeten LeserInnen können berücksich- tigt werden. Klar fomulieren was kann ich dann machen. TEXT ?!
 			</p>
 
-			<div class="splace-grid-row splace-grid-2 splace-user__action-grid">
+			<div class="splace-grid-row splace-grid-2 splace-user__action-grid cf">
 				<div class="splace-grid-item">
-					<a href="#" class="splace-user__facebook-login"><i class="icon-facebook"></i> Über Facebook anmelden</a>
+					<a href="/facebook" class="splace-user__facebook-login"><i class="icon-facebook"></i> Über Facebook</a>
+					<span class="splace-user__login-or">oder</span>
 				</div>
 				<div class="splace-grid-item">
 					<form class="splace-user__login-form">
+						<h4>Ungültige E-Mail/Passwort Kombination</h4>
 						<div class="splace-user__input-wrapper">
 							<label for="splace-login-email" class="splace-login__label">E-Mail</label>
 							<input type="email" name="email" id="splace-login-email" class="splace-user__input">
@@ -339,7 +341,7 @@
 							<input type="password" name="password" id="splace-login-password" class="splace-user__input">
 						</div>
 						<div class="splace-user__input-wrapper">
-							<a href="#" class="splace-user__forgot-password">> Password vergessen</a>
+							<a href="#" class="splace-user__forgot-password splace-pw-reset__trigger">> Password vergessen</a>
 							<input type="submit" value="> OK" class="splace-user__submit">
 						</div>
 					</form>
@@ -366,7 +368,7 @@
 							<input type="email" name="email" id="splace-signup-email" class="splace-user__input">
 						</div>
 						<div class="splace-user__input-wrapper">
-							<input type="file" class="splace-user__file">
+							<input type="file" class="splace-user__file" id="splace-signup-photo">
 						</div>
 					</div>
 					<div class="splace-grid-item">
@@ -379,14 +381,37 @@
 							<label for="splace-signup-password-confirm" class="splace-login__label">Password wiederholung</label>
 							<input type="password" name="password-confirm" id="splace-signup-password-confirm" class="splace-user__input">
 						</div>
-
+						<input type="submit" value="> Registrieren" class="splace-user__submit">
 					</div>
 				</div>
-				<div class="splace-user__line"></div>
-				<input type="submit" value="> Registrieren" class="splace-user__submit">
 			</form>
 		</div>
 	</div>
+
+	<div class="splace-user splace-user__pw-reset-modal">
+		<span class="splace-user__title">Passwort anfordern</span>
+		<span class="splace-user__close">x</span>
+
+		<div class="splace-user__login-section">
+			<h2>Passwort vergessen</h2>
+			<p>
+				Sie haben Ihr Passwort vergessen? Kein Problem, nach Eingabe Ihrer Email Adresse übermitteln wir Ihnen ein neues Passwort.
+			</p>
+
+			<form class="splace-user__pw-reset-form" name="pw-reset-form">
+				<h4>Ihre Emailadresse ist uns leider nicht bekannt.</h4>
+				<div class="splace-user__input-wrapper">
+					<label for="splace-pw-reset-email" class="splace-login__label">E-Mail</label>
+					<input type="email" name="email" id="splace-pw-reset-email" class="splace-user__input">
+				</div>
+				<input type="submit" value="> Passwort anfordern" class="splace-user__submit">
+			</form>
+			<div class="splace-user__pw-reset-success">
+				<p>Es wurde ein neues Passwort an Ihre Adresse gesendet.</p>
+			</div>
+		</div>
+	</div>
+
 
 	<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
 	    <div class="slides"></div>

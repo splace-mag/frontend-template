@@ -6,13 +6,17 @@
 	top: -100%;
 	left: 0;
 	z-index: 5000;
-	padding: 0 10% 5rem 10%;
+	padding: 0 5% 5rem 5%;
 	color: #fff;
 	overflow-y: auto;
 	transition: top ease .5s;
 
 	&.active {
 		top: 0;
+	}
+
+	input[type="submit"] {
+		text-transform: uppercase;
 	}
 }
 
@@ -23,6 +27,7 @@
 	color: #00909f;
 	font-weight: bold;
 	font-size: 2rem;
+	pointer: cursor;
 }
 
 .splace-user__title {
@@ -42,6 +47,7 @@
 	> h2 {
 		font-weight: bold;
 		font-size: 2rem;
+		text-align: center;
 	}
 
 	> p {
@@ -49,6 +55,19 @@
 		font-size: 1.4rem;
 		font-weight: bold;
 		margin-bottom: 3rem;
+		text-align: center;
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+}
+
+.splace-user__login-section {
+	border-bottom: 1px solid rgba(0, 144,159, .7);
+}
+.splace-user__login-signup-modal {
+	.splace-user__signup-section > p {
+		padding-left: 5%;
+		padding-right: 5%;
 	}
 }
 
@@ -71,6 +90,7 @@
 	text-decoration: none;
 	padding: .5rem;
 	display: inline-block;
+	width: 66%;
 
 	> i {
 		margin: 0 5px;
@@ -92,6 +112,8 @@
 	height: 3rem;
 	color: #000;
 	line-height: 4rem;
+	padding-left: 10px;
+	font-size: 1.3rem;
 }
 
 .splace-user__submit {
@@ -110,7 +132,7 @@
 	position: absolute;
 	left: 10px;
 	top: 5px;
-	color: #444;
+	color: #b4abaa;
 	font-size: .8rem;
 	text-transform: uppercase;
 }
@@ -139,25 +161,92 @@
 .splace-user__file::before {
   content: 'Profilbild hochladen';
   display: inline-block;
-  background: #fff;
+  background: transparent;
   padding: 0 10px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
-  text-shadow: 1px 1px #fff;
+  text-align: center;
   font-weight: 700;
   font-size: 10pt;
-  color: #00909f;
+  color: #fff;
   height: 3rem;
   width: 100%;
   line-height: 3rem;
   font-size: 1rem;
   text-transform: uppercase;
+  border: 1px solid #00909f;
 }
 .splace-user__file:hover::before {
   border-color: black;
 }
 .splace-user__file:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+
+.splace-user__pw-reset-form > .splace-user__input-wrapper {
+	width: 57%;
+	float: left;
+}
+.splace-user__pw-reset-form > .splace-user__submit {
+	width: 40%;
+}
+.splace-user__pw-reset-form > h4 {
+	text-align: left;
+	color: #00909f;
+	font-size: 1.7rem;
+	line-height: 1.7rem;
+	margin-bottom: .5rem;
+	visibility: hidden;
+
+	&.active {
+		visibility: visible;
+	}
+}
+.splace-user__pw-reset-form {
+	&.hidden {
+		display: none;
+	}
+}
+.splace-user__pw-reset-modal {
+	background: url('../../assets/userBG.jpg') no-repeat 0 -60% rgba(0, 0, 0, .9);
+}
+
+.splace-user__pw-reset-success {
+	background: #dff0d8;
+	border: 1px solid #3c763d;
+	color: #3c763d;
+	padding: 0 10px;
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}
+
+.splace-user__login-form > h4 {
+	text-align: left;
+	color: #00909f;
+	font-size: 1.2rem;
+	line-height: 1.7rem;
+	margin-bottom: .5rem;
+	margin-top: 0;
+
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}
+
+.splace-user__login-or {
+	text-transform: uppercase;
+	position: relative;
+	left: 43px;
+	color: #ddd;
+	top: 10px;
+	font-size: 1.5rem;
+	font-weight: bold;
 }
