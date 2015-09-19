@@ -303,8 +303,18 @@ var splaceUserActionController = (function() {
 		var password = $('#splace-signup-password').val();
 		var photo = $('#splace-signup-photo');
 
+		if(password !== $('#splace-signup-password-confirm').val()) {
+			$('.splace-user__signup-form > h4').addClass('active').text('Die beiden Passwörter stimmen nicht überein.');
+			return;
+		}
+
 		splaceUserController.signup(name, email, password, photo, function(response) {
-			console.log(response);
+			if(response.success) {
+				close();
+				return;
+			} else {
+				$('.splace-user__signup-form > h4').addClass('active').text(response.error);
+			}
 		});
 	}
 

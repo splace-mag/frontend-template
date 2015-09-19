@@ -60,7 +60,19 @@ var splacePageController = (function($) {
   		} else {
   			splaceOrientationController.setHelpSite(false);
   		}
+
+  		var color = $(content).filter('.splace-portrait').data('color');
+  		if(color.length !== 7) {
+  			color = '#00909f';
+  		}
+  		setPageColor(color);
     	
+	}
+
+	function setPageColor(color) {
+		$('.splace-color').css('color', color);
+		$('.splace-background-color').css('background-color', color);
+		$('.splace-border-color').css('border-color', color);
 	}
 
 	//Creates an empty div container
@@ -322,6 +334,12 @@ var splacePageController = (function($) {
 		$(function() {
 			adjustHead();
 		});
+
+		var color = $('.splace-portrait').data('color');
+  		if(color.length !== 7) {
+  			color = '#00909f';
+  		}
+  		setPageColor(color);
 	}
 
 	init();

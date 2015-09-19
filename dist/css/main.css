@@ -1108,7 +1108,6 @@ body {
   content: 'Profilbild hochladen';
   display: inline-block;
   background: transparent;
-  padding: 0 10px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -1118,7 +1117,7 @@ body {
   font-size: 10pt;
   color: #fff;
   height: 3rem;
-  width: 100%;
+  width: 99%;
   line-height: 3rem;
   font-size: 1rem;
   text-transform: uppercase;
@@ -1181,6 +1180,18 @@ body {
   top: 10px;
   font-size: 1.5rem;
   font-weight: bold; }
+
+.splace-user__signup-form > h4 {
+  text-align: left;
+  color: #00909f;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+  margin-bottom: .5rem;
+  margin-top: 0;
+  padding: 0 5%;
+  display: none; }
+  .splace-user__signup-form > h4.active {
+    display: block; }
 
 .splace-index-wrapper {
   display: -webkit-box;
