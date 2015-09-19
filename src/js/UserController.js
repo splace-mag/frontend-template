@@ -307,6 +307,7 @@ var splaceUserController = (function() {
 			formData.append('password', password);
 		}
 		formData.append('_token', splaceConfig.token);
+		formData.append('id', user.id);
 
 		$.ajax({
 			url: '/profile',

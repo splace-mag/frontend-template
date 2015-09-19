@@ -44,19 +44,24 @@
 					</g>
 				</svg>
 				<div class="splace-paragraph__comment">
-					<span class="splace-paragraph__comment-author">David Lechner</span>
 					<div class="media attribution">
 					  <a href="http://twitter.com/stubbornella" class="img">
 					    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/128.jpg" alt="me" />
 					  </a>
 
 					  <div class="bd">
-					    Das ist ein normales Kommentar, und niemand liest es.
-					    Interessant. Wirklich.
+					  	<span class="splace-paragraph__comment-author">David Lechner</span>
+					  	<span class="splace-paragraph__comment-time">06.05.2015</span>
 					  </div>
+					  <p>
+					  	Das ist ein normales Kommentar, und niemand liest es.
+					    Interessant. Wirklich.
+					  </p>
 
 					</div>
 				</div>
+
+				<div class="splace-para">Note</div>
 			</div>
 			<div class="splace-paragraph__text">
 				<a href="https://www.youtube.com/watch?v=jhFqSlvbKAM" data-youtube="jhFqSlvbKAM" class="splace-video splace-video__youtube">Video</a>
@@ -394,9 +399,9 @@
 
 	<div class="splace-user splace-user__login-signup-modal">
 		<span class="splace-user__title">Anmelden / Registrieren</span>
-		<span class="splace-user__close">x</span>
+		<span class="splace-user__close splace-color">x</span>
 
-		<div class="splace-user__login-section">
+		<div class="splace-user__login-section splace-border-color">
 			<h2>Anmelden</h2>
 			<p>
 				Um Artikel zu kommentieren müssen Sie registriert sein. Nur Kommentare von angemeldeten LeserInnen können berücksich- tigt werden. Klar fomulieren was kann ich dann machen. TEXT ?!
@@ -460,7 +465,7 @@
 							<label for="splace-signup-password-confirm" class="splace-login__label">Password wiederholung</label>
 							<input type="password" name="password-confirm" id="splace-signup-password-confirm" class="splace-user__input">
 						</div>
-						<input type="submit" value="> Registrieren" class="splace-user__submit">
+						<input type="submit" value="> Registrieren" class="splace-user__submit splace-background-color">
 					</div>
 				</div>
 			</form>
@@ -469,9 +474,9 @@
 
 	<div class="splace-user splace-user__pw-reset-modal">
 		<span class="splace-user__title">Passwort anfordern</span>
-		<span class="splace-user__close">x</span>
+		<span class="splace-user__close splace-color">x</span>
 
-		<div class="splace-user__login-section">
+		<div class="splace-user__login-section splace-border-color" style="border-bottom: 0;">
 			<h2>Passwort vergessen</h2>
 			<p>
 				Sie haben Ihr Passwort vergessen? Kein Problem, nach Eingabe Ihrer Email Adresse übermitteln wir Ihnen ein neues Passwort.
@@ -483,7 +488,7 @@
 					<label for="splace-pw-reset-email" class="splace-login__label">E-Mail</label>
 					<input type="email" name="email" id="splace-pw-reset-email" class="splace-user__input">
 				</div>
-				<input type="submit" value="> Passwort anfordern" class="splace-user__submit">
+				<input type="submit" value="> Passwort anfordern" class="splace-user__submit splace-background-color">
 			</form>
 			<div class="splace-user__pw-reset-success">
 				<p>Es wurde ein neues Passwort an Ihre Adresse gesendet.</p>
