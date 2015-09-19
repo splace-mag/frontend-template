@@ -176,6 +176,7 @@
   font-size: 1rem;
   text-transform: uppercase;
   border: 1px solid #00909f;
+  border-color: inherit;
 }
 .splace-user__file:hover::before {
   border-color: black;
@@ -266,12 +267,32 @@
 	}
 }
 
+.splace-user__profile-form > h4 {
+	text-align: left;
+	color: #00909f;
+	font-size: 1.2rem;
+	line-height: 1.7rem;
+	margin-bottom: .5rem;
+	margin-top: 0;
+	padding: 0 5%;
+
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}
+
 .splace-user__profile-modal .splace-user__login-section {
 	max-width: 500px;
 	margin-top: 100px;
 
 	.splace-user__input-wrapper {
 		margin-bottom: 40px;
+	}
+
+	.splace-user__submit {
+		margin-top: 20px;
 	}
 }
 

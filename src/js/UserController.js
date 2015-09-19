@@ -10,7 +10,8 @@ var splaceUserController = (function() {
 	var user = {
 		id: '',
 		name: '',
-		email: ''
+		email: '',
+		image: ''
 	};
 
 	function getUserId() {
@@ -32,6 +33,16 @@ var splaceUserController = (function() {
 			return false;
 		}
 		return user.email;
+	}
+
+	function getImageUrl() {
+		if(!loggedin) {
+			return false;
+		}
+		if(user.image.startsWith('https://')) {
+			return user.image;
+		}
+		return '/images/'+user.image;
 	}
 
 	function signin(email, password, callback) {
@@ -257,20 +268,110 @@ var splaceUserController = (function() {
 		});
 	}
 
+	function updateProfile(name, email, password, photoLink, callback) {
+		if(!loggedin) {
+			callback({
+				success: false,
+				error: 'Not loggedin'
+			});
+			return;
+		}
+
+		if(email.length < 6 || name.length < 2 || password.length < 4) {
+			callback({
+				success: false,
+				error: 'Invalid credentials (too short)'
+			});
+			return;
+		}
+
+		var files = photoLink[0].files;
+
+		var formData = new FormData();
+
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+
+			// Check the file type.
+			if (!file.type.match('image.*')) {
+				continue;
+			}
+
+			// Add the file to the request.
+			formData.append('image', file, file.name);
+		}
+
+		formData.append('name', name);
+		formData.append('email', email);
+		if(password !== '********') {
+			formData.append('password', password);
+		}
+		formData.append('_token', splaceConfig.token);
+
+		$.ajax({
+			url: '/profile',
+			data: formData,
+			processData: false,
+			contentType: false,
+			type: 'POST',
+			success: function(response){
+				if(!response.success) {
+					callback({
+						success: false,
+						error: response.error
+					});
+				}
+
+				loggedin = true;
+				user = response.user;
+
+				callback({
+					success: true
+				});
+			},
+			error: function(response) {
+				if(typeof response.error !== 'string') {
+					response.error = 'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
+				}
+				callback({
+					success: false,
+					error: response.error
+				});
+			}
+		});
+	}
+
 	function isLoggedIn() {
 		return loggedin;
 	}
+
+	function init() {
+		if(typeof splaceConfig.user === 'undefined') {
+			return;
+		}
+
+		user.id = splaceConfig.user.id;
+		user.name = splaceConfig.user.name;
+		user.email = splaceConfig.user.email;
+		user.image = splaceConfig.user.image;
+
+		loggedin = true;
+	}
+
+	init();
 
 	return {
 		getUserId: getUserId,
 		getUserEmail: getUserEmail,
 		getUserName: getUserName,
+		getImageUrl: getImageUrl,
 		signin: signin,
 		singout: signout,
 		signup: signup,
 		sendResetMail: sendResetMail,
 		resetPassword: resetPassword,
-		isLoggedIn: isLoggedIn
+		isLoggedIn: isLoggedIn,
+		updateProfile: updateProfile
 	}
 
 })();
@@ -379,14 +480,14 @@ var splacePWResetActionController = (function() {
 
 		splaceUserController.sendResetMail(email, function(response) {
 			if(response.success) {
-				$('.splace-user__pw-reset-form').addClass('hidden');
-				$('.splace-user__pw-reset-success').addClass('active');
+				$('.splace-user__profile-form').addClass('hidden');
+				$('.splace-user__profile-success').addClass('active');
 			} else {
 				if(typeof response.error !== 'string') {
 					response.error = 'Bitte prüfen Sie Ihre Eingabe.';
 				}
-				$('.splace-user__pw-reset-form h4').text(response.error);
-				$('.splace-user__pw-reset-form h4').addClass('active');
+				$('.splace-user__profile-form h4').text(response.error);
+				$('.splace-user__profile-form h4').addClass('active');
 			}
 		});
 	}
@@ -429,24 +530,37 @@ var splaceProfileActionController = (function() {
 	function changeProfileRequest(e) {
 		e.preventDefault();
 
-		var email = $('.splace-user__pw-reset-form input[type="email"]').val();
+		var name = $('#splace-profile-name').val();
+		var email = $('#splace-profile-email').val();
+		var password = $('#splace-profile-password').val();
+		var photo = $('#splace-profile-photo')
 
-		if(email.length === 0) {
-			$('.splace-user__pw-reset-form h4').text("Bitte geben Sie eine gültige E-Mail Adresse ein.");
-			$('.splace-user__pw-reset-form h4').addClass('active');
+		
+
+		if(email.length < 4) {
+			$('.splace-user__profile-form h4').text("Bitte geben Sie eine gültige E-Mail Adresse ein.");
+			$('.splace-user__profile-form h4').addClass('active');
 			return;
 		}
 
-		splaceUserController.sendResetMail(email, function(response) {
+		if(name.length < 2) {
+			$('.splace-user__profile-form h4').text("Bitte geben Sie einen gültigen Namen ein.");
+			$('.splace-user__profile-form h4').addClass('active');
+			return;
+		}
+
+		if(password.length < 4) {
+			$('.splace-user__profile-form h4').text("Das Passwort muss mindestens aus 4 Zeichen bestehen.");
+			$('.splace-user__profile-form h4').addClass('active');
+			return;
+		}
+
+		splaceUserController.updateProfile(name, email, password, photo, function(response) {
 			if(response.success) {
-				$('.splace-user__pw-reset-form').addClass('hidden');
-				$('.splace-user__pw-reset-success').addClass('active');
+				close();
+				return;
 			} else {
-				if(typeof response.error !== 'string') {
-					response.error = 'Bitte prüfen Sie Ihre Eingabe.';
-				}
-				$('.splace-user__pw-reset-form h4').text(response.error);
-				$('.splace-user__pw-reset-form h4').addClass('active');
+				$('.splace-user__profile-form > h4').addClass('active').text(response.error);
 			}
 		});
 	}
@@ -466,7 +580,7 @@ var splaceProfileActionController = (function() {
 
 	function init() {
 
-		if(splaceUserController.isLoggedIn()) {
+		if(!splaceUserController.isLoggedIn()) {
 			return;
 		}
 
@@ -481,6 +595,7 @@ var splaceProfileActionController = (function() {
 		$('#splace-profile-name').val(splaceUserController.getUserName());
 		$('#splace-profile-email').val(splaceUserController.getUserEmail());
 		$('#splace-profile-password').val('********');
+		$('#splace-profile-image').prop('src', splaceUserController.getImageUrl());
 
 		$('.splace-user__profile-form').on('submit', changeProfileRequest);
 	}
@@ -492,3 +607,10 @@ var splaceProfileActionController = (function() {
 	}
 
 })();
+
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) === 0;
+  };
+}
