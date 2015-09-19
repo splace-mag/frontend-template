@@ -73,6 +73,7 @@ var splacePageController = (function($) {
 		$('.splace-color').css('color', color);
 		$('.splace-background-color').css('background-color', color);
 		$('.splace-border-color').css('border-color', color);
+		$('.splace-paragraph__comments rect').attr('fill', color);
 	}
 
 	//Creates an empty div container

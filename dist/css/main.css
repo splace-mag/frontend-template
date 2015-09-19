@@ -718,7 +718,6 @@ body {
   font-size: 1.8rem; }
 
 .splace-paragraph__comments {
-  background-image: url("../../assets/comment-02.svg");
   width: 20px;
   height: 20px;
   position: absolute;
@@ -736,7 +735,11 @@ body {
     left: 15px;
     display: block;
     font-size: 20px;
-    color: #09909f; }
+    color: inherit; }
+  .splace-paragraph__comments > svg {
+    position: absolute;
+    left: 0;
+    top: 0; }
 
 .splace-paragraph__comment {
   display: block;
@@ -747,7 +750,8 @@ body {
   -webkit-transform: translateX(-300px);
       -ms-transform: translateX(-300px);
           transform: translateX(-300px);
-  min-width: 250px; }
+  min-width: 250px;
+  color: #333; }
   .splace-paragraph__comment img {
     width: 32px; }
   .splace-paragraph__comment:first-child {
