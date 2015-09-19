@@ -52,7 +52,7 @@ var splaceUserController = (function() {
 			return;
 		}
 
-		$.post('/signin', {email: email, password: password})
+		$.post('/auth/login', {email: email, password: password, _token: splaceConfig._token})
 			.done(function(response) {
 				if(!response.success) {
 					callback({
@@ -113,7 +113,7 @@ var splaceUserController = (function() {
 			return;
 		}
 
-		$.post('/sendResetMail', {email: email})
+		$.post('/sendResetMail', {email: email, _token: splaceConfig._token})
 			.done(function(response) {
 				if(!response.success) {
 					callback({
@@ -189,6 +189,74 @@ var splaceUserController = (function() {
 			});
 	}
 
+	function signup(name, email, password, photoLink, callback) {
+		if(loggedin) {
+			callback({
+				success: false,
+				error: 'Already loggedin'
+			});
+			return;
+		}
+
+		if(email.length < 6 || name.length < 2 || password.length < 4) {
+			callback({
+				success: false,
+				error: 'Invalid credentials (too short)'
+			});
+			return;
+		}
+
+		var files = photoLink[0].files;
+
+		var formData = new FormData();
+
+		for (var i = 0; i < files.length; i++) {
+			var file = files[i];
+
+			// Check the file type.
+			if (!file.type.match('image.*')) {
+				continue;
+			}
+
+			// Add the file to the request.
+			formData.append('image', file, file.name);
+		}
+
+		formData.append('name', name);
+		formData.append('email', email);
+		formData.append('password', password);
+		formData.append('_token', splaceConfig._token);
+
+		$.ajax({
+			url: '/auth/register',
+			data: formData,
+			processData: false,
+			contentType: false,
+			type: 'POST',
+			success: function(response){
+				if(!response.success) {
+					callback({
+						success: false,
+						error: response.error
+					});
+				}
+
+				loggedin = true;
+				user = response.user;
+
+				callback({
+					success: true
+				});
+			},
+			error: function(response) {
+				callback({
+					success: false,
+					error: response.error
+				});
+			}
+		});
+	}
+
 
 	return {
 		getUserId: getUserId,
@@ -196,6 +264,7 @@ var splaceUserController = (function() {
 		getUserName: getUserName,
 		signin: signin,
 		singout: signout,
+		signup: signup,
 		sendResetMail: sendResetMail,
 		resetPassword: resetPassword
 	}
@@ -226,6 +295,19 @@ var splaceUserActionController = (function() {
 
 	}
 
+	function performSignup(e) {
+		e.preventDefault();
+
+		var name = $('#splace-signup-name').val();
+		var email = $('#splace-signup-email').val();
+		var password = $('#splace-signup-password').val();
+		var photo = $('#splace-signup-photo');
+
+		splaceUserController.signup(name, email, password, photo, function(response) {
+			console.log(response);
+		});
+	}
+
 	function close() {
 		userInterface.removeClass('active');
 		visible = false;
@@ -254,6 +336,7 @@ var splaceUserActionController = (function() {
 		});
 
 		$('.splace-user__login-form').on('submit', performLogin);
+		$('.splace-user__signup-form').on('submit', performSignup);
 	}
 
 	init();
