@@ -17,7 +17,7 @@
 			<span class="splace-article-header__author">von <strong>Sabine Kienzer</strong></span>
 			<div class="splace-article-header__marker down">^ swipe up</div>
 
-			<h1 style="right: -12%; bottom: 31%;">The Question Arises from the Logical Developement</h1>
+			<h1 style="right: -12%; bottom: 31%;" class="splace-profile__trigger">The Question Arises from the Logical Developement</h1>
 			<h2 style="right: 0%; bottom: 17%;">Interview mit Ute Ploier zum Thema Farbe in der Mode</h2>
 			<img src="assets/Cover_Rottmann_Selina.jpg" alt="" style="width: 70%; left: 0; top: 10%;">
 		</div>
@@ -409,6 +409,43 @@
 			</form>
 			<div class="splace-user__pw-reset-success">
 				<p>Es wurde ein neues Passwort an Ihre Adresse gesendet.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="splace-user splace-user__profile-modal">
+		<span class="splace-user__title">Profil</span>
+		<span class="splace-user__close">x</span>
+
+		<div class="splace-user__login-section">
+			<h2>Ihre Einstellungen</h2>
+			<p>
+			</p>
+
+			<form class="splace-user__profile-form" name="profile-form">
+				<h4></h4>
+				<div class="splace-user__input-wrapper">
+					<label for="splace-profile-name" class="splace-login__label">Name</label>
+					<input type="name" name="name" id="splace-profile-name" class="splace-user__input" value="Lukas Leitner">
+				</div>
+				<div class="splace-user__input-wrapper">
+					<label for="splace-profile-email" class="splace-login__label">E-Mail</label>
+					<input type="email" name="email" id="splace-profile-email" class="splace-user__input" value="leitner@applics.at">
+				</div>
+				<div class="splace-user__input-wrapper">
+					<label for="splace-profile-password" class="splace-login__label">Passwort</label>
+					<input type="password" name="password" id="splace-profile-password" class="splace-user__input" value="********">
+				</div>
+				
+				<div class="splace-user__profile-photo">
+					<img src="https://scontent-vie1-1.xx.fbcdn.net/hprofile-xpa1/v/t1.0-1/p160x160/1508604_10202847543100539_5665856051308959351_n.jpg?oh=972185063d696503372536a70c5daba2&oe=566CA9D6" alt="">
+					<input type="file" class="splace-user__file" id="splace-signup-photo">
+				</div>
+				
+				<input type="submit" value="> Passwort anfordern" class="splace-user__submit">
+			</form>
+			<div class="splace-user__pw-reset-success">
+				<p>Die Änderungen wurden gespeichert.</p>
 			</div>
 		</div>
 	</div>
