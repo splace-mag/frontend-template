@@ -254,6 +254,29 @@
 	font-size: .9rem;
 }
 
+.splace-paragraph__comment-note {
+	text-decoration: underline;
+	color: #333;
+	transform: translateX(-300px);
+	transition: .7s all ease;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.splace-paragraph__comment-add-note-wrapper {
+	transform: translateX(-300px);
+	transition: .7s all ease;
+}
+
+.splace-paragraph__comment-add {
+	text-decoration: underline;
+	font-weight: bold;
+	margin-top: 1rem;
+	display: inline-block;
+	cursor: pointer;
+}
+
+
 .splace-paragraph__text--heading {
 	width: 90%;
 	padding-top: 2rem;
@@ -386,6 +409,12 @@
 	opacity: 1;
 	height: auto;
 
+	> .splace-paragraph__comment-note {
+		transform: translateX(0px);	
+	}
+	> .splace-paragraph__comment-add-note-wrapper {
+		transform: translateX(0px);		
+	}
 }
 .splace-paragraph--comments-active > .splace-paragraph__comments > .splace-paragraph__comment {
 	transform: translateX(0px);

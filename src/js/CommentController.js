@@ -33,11 +33,21 @@ var splaceCommentController = (function() {
 			});
 	}
 
+	function enableCommentInput(e) {
+		e.stopPropagation();
+		console.log("awww yeah!");
+	}
 
+	function init() {
+		$('body').on('click, touchend', '.splace-paragraph__comment-add', enableCommentInput);
+	}
+
+	init();
 
 	return {
 		addComment: addComment,
-		deleteComment: deleteComment
+		deleteComment: deleteComment,
+		enableCommentInput: enableCommentInput
 	}
 
 })();

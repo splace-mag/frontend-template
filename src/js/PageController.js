@@ -252,6 +252,12 @@ var splacePageController = (function($) {
 		$('body').on('click, touchend', '.splace-paragraph__comments', commentClick);
 		$('body').on('click, touchend', '.splace-paragraph__text', textClick);
 */
+
+		
+		$('.splace-paragraph__comment-add').hammer().bind("tap", function(e) {
+			e.stopPropagation();
+		    splaceCommentController.enableCommentInput(e);
+		});
 		$('.splace-paragraph__text').hammer().bind("tap", function(e) {
 		    textClick();
 		});
@@ -292,7 +298,7 @@ var splacePageController = (function($) {
 	function commentClick(e) {
 		//e.preventDefault();
 		//e.stopPropagation();
-
+		console.log(e);
 		if($('.splace-paragraph--comments-active').length > 0) {
 			setNothingActive();
 		} else {
