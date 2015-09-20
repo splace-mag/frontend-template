@@ -9,6 +9,8 @@ var splacePageController = (function($) {
 	var orientationController,
 		menuController;
 
+	var _preventCommentClickState = false;
+
 	//Moves to the next or previous page (left or right) 
 	//The page has therefor be created before moving
 	function movePage(direction) {
@@ -256,12 +258,13 @@ var splacePageController = (function($) {
 		
 		$('.splace-paragraph__comment-add').hammer().bind("tap", function(e) {
 			e.stopPropagation();
+			e.preventDefault();
 		    splaceCommentController.enableCommentInput(e);
 		});
 		$('.splace-paragraph__text').hammer().bind("tap", function(e) {
 		    textClick();
 		});
-		$('.splace-paragraph__comments').hammer().bind("tap", function(e) {
+		$('.splace-paragraph__comments > svg').hammer().bind("tap", function(e) {
 		    commentClick(e);
 		});
 		$('.splace-paragraph__annotation').hammer().bind("tap", function(e) {

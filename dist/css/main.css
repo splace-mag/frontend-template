@@ -792,6 +792,23 @@ body {
   margin-top: 1rem;
   display: inline-block;
   cursor: pointer; }
+  .splace-paragraph__comment-add.hidden {
+    display: none; }
+
+.splace-paragraph__comment-form {
+  display: none;
+  position: relative; }
+  .splace-paragraph__comment-form > textarea {
+    width: 90%;
+    height: 15rem; }
+  .splace-paragraph__comment-form > span {
+    left: 8px;
+    top: 7px;
+    position: absolute;
+    font-size: .8rem;
+    color: #666; }
+  .splace-paragraph__comment-form.active {
+    display: block; }
 
 .splace-paragraph__text--heading {
   width: 90%;

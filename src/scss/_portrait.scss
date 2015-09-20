@@ -274,6 +274,31 @@
 	margin-top: 1rem;
 	display: inline-block;
 	cursor: pointer;
+
+	&.hidden {
+		display: none;
+	}
+}
+.splace-paragraph__comment-form {
+	display: none;
+	position: relative;
+
+	> textarea {
+		width: 90%;
+		height: 15rem;
+	}
+
+	> span {
+		left: 8px;
+		top: 7px;
+		position: absolute;
+		font-size: .8rem;
+		color: #666;
+	}
+
+	&.active {
+		display: block;
+	}
 }
 
 

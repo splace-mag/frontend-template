@@ -35,7 +35,9 @@ var splaceCommentController = (function() {
 
 	function enableCommentInput(e) {
 		e.stopPropagation();
-		console.log("awww yeah!");
+		var $target = $(e.target);
+		$target.siblings('form').addClass('active');
+		$target.addClass('hidden');
 	}
 
 	function init() {
