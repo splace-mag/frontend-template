@@ -10,7 +10,7 @@
 </head>
 <body class="splace-orientation--portrait">
 	
-	<div class="splace-portrait" data-color="#ff0000">
+	<div class="splace-portrait" data-color="#09909f">
 		<div class="splace-article-header" style="background-image: linear-gradient(-60deg, rgb(73,137,124), rgb(112,198,215));">
 			<div class="splace-article-header__marker">Cover</div>
 			<div class="splace-article-header__marker annotated">Reading: 7 min</div>
@@ -43,11 +43,11 @@
 						</g>
 					</g>
 				</svg>
-				<div class="splace-paragraph__comment">
+				<div class="splace-paragraph__comment" data-comment-id="1234">
 					<div class="media attribution">
-					  <a href="http://twitter.com/stubbornella" class="img">
+					  <div class="img">
 					    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/peterlandt/128.jpg" alt="me" />
-					  </a>
+					  </div>
 
 					  <div class="bd">
 					  	<span class="splace-paragraph__comment-author">David Lechner</span>
@@ -66,10 +66,8 @@
 					<span class="splace-paragraph__comment-add splace-color">Kommentar hinterlassen</span>
 					<form name="splace-add-comment-form" class="splace-paragraph__comment-form">
 						<span>Ihre Anmerkung</span>
-						<textarea>
-							
-						</textarea>
-						<input type="submit" value="> Anmerkung absenden">
+						<textarea name="comment"></textarea>
+						<input type="submit" value="> Anmerkung absenden" class="splace-background-color">
 						<input type="hidden" name="paragraph-id" value="1234">
 					</form>
 				</div>
