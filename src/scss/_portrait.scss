@@ -324,6 +324,15 @@
 	}
 }
 
+.splace-add-comment-notice {
+	color: #666;
+	padding: .5rem 0;
+	display: none;
+
+	&.active {
+		display: block;
+	}
+}
 
 .splace-paragraph__text--heading {
 	width: 90%;

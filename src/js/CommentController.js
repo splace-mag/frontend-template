@@ -47,6 +47,10 @@ var splaceCommentController = (function() {
 		e.preventDefault();
 		$target = $(e.target);
 
+		if(!splaceUserController.isLoggedIn()) {
+			return;
+		}
+
 		var comment = $target.find('textarea').val();
 		var paragraphId = $target.find('input[type="hidden"]').val();
 
@@ -55,10 +59,17 @@ var splaceCommentController = (function() {
 		addComment(paragraphId, comment, $target);
 		disableCommentInput($target);
 
+		$target.parent().find('.splace-add-comment-notice').addClass('active');
 	}
 
 	function enableCommentInput(e) {
 		e.stopPropagation();
+
+		if(!splaceUserController.isLoggedIn()) {
+			$('.splace-user__trigger').click();
+			return;
+		}
+
 		var $target = $(e.target);
 		$target.siblings('form').unbind('submit');
 		$target.siblings('form').addClass('active').on('submit', submitComment);

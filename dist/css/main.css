@@ -831,6 +831,13 @@ body {
   .splace-paragraph__comment-form.active {
     display: block; }
 
+.splace-add-comment-notice {
+  color: #666;
+  padding: .5rem 0;
+  display: none; }
+  .splace-add-comment-notice.active {
+    display: block; }
+
 .splace-paragraph__text--heading {
   width: 90%;
   padding-top: 2rem;
