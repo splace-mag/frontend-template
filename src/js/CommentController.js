@@ -20,14 +20,14 @@ var splaceCommentController = (function() {
 		$lastComment = $target.parents('.splace-paragraph__comments').find('.splace-paragraph__comment').last();
 
 		$(html).insertAfter($lastComment);
-/*
+
 		$.post('/addComment', {paragraphId: paragraphId, comment: comment})
 			.done(function(response) {
 				$('[data-comment-id="'+tmpCommentId+'"]').attr('data-comment-id', response.commentId);
 			})
 			.fail(function(response) {
 				$('[data-comment-id="'+tmpCommentId+'"]').remove();
-			});*/
+			});
 
 		return tmpCommentId;
 	}

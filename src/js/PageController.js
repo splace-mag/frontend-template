@@ -76,6 +76,12 @@ var splacePageController = (function($) {
 		$('.splace-background-color').css('background-color', color);
 		$('.splace-border-color').css('border-color', color);
 		$('.splace-paragraph__comments rect').attr('fill', color);
+
+		var rgbaCol = 'rgba(' + parseInt(color.slice(-6,-4),16)
+		    + ',' + parseInt(color.slice(-4,-2),16)
+		    + ',' + parseInt(color.slice(-2),16)
+		    +',0.1)';
+		$('.splace-background-color-alpha').css('background-color', rgbaCol);
 	}
 
 	//Creates an empty div container

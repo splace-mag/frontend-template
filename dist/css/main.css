@@ -719,12 +719,13 @@ body {
 
 .splace-paragraph__comments {
   width: 20px;
-  height: 20px;
+  min-height: 20px;
+  height: auto;
   position: absolute;
   background-repeat: no-repeat;
   left: 0%;
   top: 2.9rem;
-  padding: 2rem;
+  padding: 2rem 0 2rem 2rem;
   opacity: .5;
   -webkit-transition: all 0.7s ease;
           transition: all 0.7s ease; }
@@ -943,7 +944,7 @@ body {
           transform: translate(60%, 0) scale(0.5); }
 
 .splace-paragraph--comments-active > .splace-paragraph__comments {
-  width: 45%;
+  width: 40%;
   opacity: 1;
   height: auto; }
   .splace-paragraph--comments-active > .splace-paragraph__comments > .splace-paragraph__comment-note {
@@ -959,6 +960,9 @@ body {
   -webkit-transform: translateX(0px);
       -ms-transform: translateX(0px);
           transform: translateX(0px); }
+
+.splace-paragraph:not(.splace-paragraph--comments-active) > .splace-paragraph__comments {
+  background-color: transparent !important; }
 
 /* HELP PAGE */
 .splace-article-header__help-row {
