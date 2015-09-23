@@ -21,7 +21,7 @@ var splaceCommentController = (function() {
 
 		$(html).insertAfter($lastComment);
 
-		$.post('/addComment', {paragraphId: paragraphId, comment: comment})
+		$.post('/addComment', {paragraphId: paragraphId, comment: comment, _token: splaceConfig.token})
 			.done(function(response) {
 				$('[data-comment-id="'+tmpCommentId+'"]').attr('data-comment-id', response.commentId);
 			})
