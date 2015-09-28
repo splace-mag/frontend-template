@@ -40,13 +40,49 @@
 	}
 }
 
+.splace-user-links__wrapper {
+	text-align: center;
+	border-right: 1px solid #fff;
+	position: relative;
+	display: inline-block;
+	width: 50px;
+
+	&.active > .splace-user-links__list {
+		bottom: 40px;
+		right: 0;
+
+		.splace-show-loggedin {
+			display: none;
+
+			.loggedin & {
+				display: block;
+			}
+		}
+
+		.splace-hide-loggedin {
+			display: block;
+
+			.loggedin & {
+				display: none;
+			}
+		}
+
+	}
+
+	.hidden {
+		display: none;
+	}
+}
+
+
 .splace-issue-selection__current {
 	padding: 0 15px;
 	position: relative;
 }
 
 .splace-issue-selection__list,
-.splace-external-links__list {
+.splace-external-links__list,
+.splace-user-links__list {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -68,7 +104,7 @@
 
 .splace-external-links__list {
 	width: 87px;
-	right: 0;
+	right: 87px;
 
 	> li {
 		display: inline-block;

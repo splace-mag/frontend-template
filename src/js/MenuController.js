@@ -53,11 +53,24 @@ var splaceMenuController = (function($) {
 		});
 	}
 
+	function userLinkTrigger() {
+		$('.splace-user-links__wrapper').on('click', function(e) {
+			$target = $(e.delegateTarget);
+
+			if($target.hasClass('active')) {
+				$target.removeClass('active');
+			} else {
+				$target.addClass('active');
+			}
+		});
+	}
+
 	function init() {
 		
 		issueSelection();
 		navigationTrigger();
 		externalLinkTrigger();
+		userLinkTrigger();
 
 		$navList = $('.splace-navigation__list');
 		for(var i in splaceConfig.navigationItems) {

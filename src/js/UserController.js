@@ -428,6 +428,13 @@ var splaceUserActionController = (function() {
 		});
 	}
 
+	function performLogout(e) {
+		e.preventDefault();
+
+		splaceUserController.signout(function(response) {
+			//TODO: Logout performed
+		});
+	}
 	function close() {
 		userInterface.removeClass('active');
 		visible = false;
@@ -435,6 +442,11 @@ var splaceUserActionController = (function() {
 
 	function toggleUserInterface(e) {
 		e.preventDefault();
+
+		if(splaceUserController.isLoggedIn()) {
+			splaceProfileActionController.toggleUserInterface();
+			return;
+		}
 
 		if(visible) {
 			userInterface.removeClass('active');
@@ -454,6 +466,7 @@ var splaceUserActionController = (function() {
 		        toggleUserInterface(e);
 		    }
 		});
+		$('.splace-user-logout_trigger').on('click', performLogout);
 
 		$('.splace-user__login-form').on('submit', performLogin);
 		$('.splace-user__signup-form').on('submit', performSignup);
@@ -571,7 +584,9 @@ var splaceProfileActionController = (function() {
 	}
 
 	function toggleUserInterface(e) {
-		e.preventDefault();
+		if(e) {
+			e.preventDefault();
+		}
 
 		if(visible) {
 			userInterface.removeClass('active');
@@ -608,7 +623,8 @@ var splaceProfileActionController = (function() {
 	init();
 
 	return {
-		init: init
+		init: init,
+		toggleUserInterface: toggleUserInterface
 	}
 
 })();
