@@ -371,7 +371,7 @@ var splaceUserController = (function() {
 		getUserName: getUserName,
 		getImageUrl: getImageUrl,
 		signin: signin,
-		singout: signout,
+		signout: signout,
 		signup: signup,
 		sendResetMail: sendResetMail,
 		resetPassword: resetPassword,
