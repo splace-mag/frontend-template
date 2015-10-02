@@ -63,12 +63,17 @@ var splacePageController = (function($) {
   			splaceOrientationController.setHelpSite(false);
   		}
 
-  		var color = $(content).filter('.splace-portrait').data('color');
+  		var color = $('body').find('.splace-portrait').data('color');
   		if(color.length !== 7) {
   			color = '#00909f';
   		}
-  		setPageColor(color);
-    	
+  		setPageColor(color);    
+
+  		setAppName();	
+	}
+
+	function setAppName() {
+		splaceLandscapeAppController.setApp($('body').find('.splace-portrait').data('app-name'), $('body').find('.splace-portrait').data('app-folder'));
 	}
 
 	function setPageColor(color) {

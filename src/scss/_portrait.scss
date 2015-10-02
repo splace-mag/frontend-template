@@ -383,7 +383,7 @@
 }
 
 .splace-paragraph__links {
-	width: 30%;
+	width: 40%;
 	margin-left: 4rem;
 	display: block;
 	float: left;
@@ -414,7 +414,7 @@
 }
 
 .splace-paragraph__books {
-	width: 30%;
+	width: 40%;
 	margin-left: 3rem;
 	display: block;
 	float: left;
@@ -430,12 +430,14 @@
 }
 
 .splace-paragraph__author {
-	width: 15%;
-	float: left;
+	width: 100%;
+	//float: left;
 	margin-left: 3rem;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
 
 	> img {
-		width: 100%;
+		width: 15%;
 	}
 }
 

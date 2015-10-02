@@ -879,7 +879,7 @@ body {
     line-height: 2.7rem; }
 
 .splace-paragraph__links {
-  width: 30%;
+  width: 40%;
   margin-left: 4rem;
   display: block;
   float: left; }
@@ -903,7 +903,7 @@ body {
       left: -1.3rem; }
 
 .splace-paragraph__books {
-  width: 30%;
+  width: 40%;
   margin-left: 3rem;
   display: block;
   float: left; }
@@ -915,11 +915,12 @@ body {
     margin-bottom: .5rem; }
 
 .splace-paragraph__author {
-  width: 15%;
-  float: left;
-  margin-left: 3rem; }
+  width: 100%;
+  margin-left: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem; }
   .splace-paragraph__author > img {
-    width: 100%; }
+    width: 15%; }
 
 .splace-paragraph--annotation-active .splace-paragraph__text:not(.splace-paragraph__text--heading) {
   opacity: 0.5;
@@ -1155,7 +1156,8 @@ body {
   color: #000;
   line-height: 4rem;
   padding-left: 10px;
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+  padding-bottom: 0; }
 
 .splace-user__submit {
   width: auto;

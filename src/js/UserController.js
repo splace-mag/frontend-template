@@ -4,6 +4,13 @@ Splace User Controller
 Author: Lukas Leitner
 */
 
+if (typeof String.prototype.startsWith != 'function') {
+  // see below for better implementation!
+  String.prototype.startsWith = function (str){
+    return this.indexOf(str) === 0;
+  };
+}
+
 var splaceUserController = (function() {
 
 	var loggedin = false;
@@ -628,10 +635,3 @@ var splaceProfileActionController = (function() {
 	}
 
 })();
-
-if (typeof String.prototype.startsWith != 'function') {
-  // see below for better implementation!
-  String.prototype.startsWith = function (str){
-    return this.indexOf(str) === 0;
-  };
-}
