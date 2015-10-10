@@ -102,7 +102,7 @@ var splaceUserController = (function() {
 			return false;
 		}
 
-		$.post('/signout', {})
+		$.get('/signout')
 			.done(function(response) {
 				loggedin = false;
 				$('body').removeClass('loggedin');
