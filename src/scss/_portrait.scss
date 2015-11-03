@@ -437,10 +437,17 @@
 	margin-top: 1rem;
 	margin-bottom: 3rem;
 
+	
+}
+
+.splace-paragraph__author-blend {
+	width: 90%;
+	
 	> img {
-		width: 90%;
+		width: 100%;
 		display: block;
 		margin-bottom: 20px;
+		mix-blend-mode: multiply;
 	}
 }
 

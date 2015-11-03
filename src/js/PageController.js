@@ -90,6 +90,12 @@ var splacePageController = (function($) {
 		    + ',' + parseInt(color.slice(-2),16)
 		    +',0.1)';
 		$('.splace-background-color-alpha').css('background-color', rgbaCol);
+
+		var rgbaCol2 = 'rgba(' + parseInt(color.slice(-6,-4),16)
+		    + ',' + parseInt(color.slice(-4,-2),16)
+		    + ',' + parseInt(color.slice(-2),16)
+		    +',0.2)';
+		$('.splace-background-color-alpha2').css('background-color', rgbaCol2);
 	}
 
 	//Creates an empty div container
