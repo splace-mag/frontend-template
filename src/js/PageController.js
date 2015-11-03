@@ -66,7 +66,7 @@ var splacePageController = (function($) {
   		}
 
   		var color = $(content).filter('.splace-portrait').data('color');
-  		if(color.length !== 7) {
+  		if(typeof color === 'undefined' || color.length !== 7) {
   			color = '#00909f';
   		}
   		setPageColor(color);    
@@ -363,21 +363,34 @@ var splacePageController = (function($) {
 
 	}
 
+	var isLangChanging = false;
 	function initLanguageSwitch() {
 		$('.splace-language-switcher').on('click', function(e) {
 			e.preventDefault();
+			e.stopPropagation();
 
-			var $target = $(e.target);
-			var newLang = 'DE';
-			if($target.text() === 'DE') {
-				newLang = 'EN';
+			if(isLangChanging) {
+				return;
 			}
 
+			isLangChanging = true;
+			var $target = $(e.target);
+			var newLang = '';
+			if($target.text() === 'DE') {
+				newLang = 'DE';
+				$target.text('EN');
+			} else {
+				newLang = 'EN';
+				$target.text('DE');
+			}
+			
 			$.get(_basePath+'/locale/'+newLang.toLowerCase())
 				.done(function(response) {
 					showPage(location.pathname, true);
-					$target.text(newLang);
-
+					
+					window.setTimeout(function() {
+						isLangChanging = false;
+					}, 500);
 				});
 
 		});
@@ -398,7 +411,7 @@ var splacePageController = (function($) {
 		});
 
 		var color = $('.splace-portrait').data('color');
-  		if(color.length !== 7) {
+  		if(typeof color === 'undefined' || color.length !== 7) {
   			color = '#00909f';
   		}
   		setPageColor(color);
