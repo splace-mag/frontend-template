@@ -57,7 +57,7 @@ var splacePageController = (function($) {
       	mkup.filter('title'), url);
 
     	$('.portrait[data-url="'+url+'"]').append($(content).filter('.splace-portrait').children());
-    	adjustHead();
+    	adjustHead('.portrait[data-url="'+url+'"]');
   	
   		if($(content).filter('.splace-portrait').children().find('.splace-article-header__help-wrapper').length > 0) {
   			splaceOrientationController.setHelpSite(true);	
@@ -126,8 +126,18 @@ var splacePageController = (function($) {
 		//}
 	}
 
-	function adjustHead() {
+	function adjustHead(selector) {
+
 		$('.splace-article-header').css('height', window.innerHeight-40);
+
+		$('.splace-article-header__marker').each(function() {
+			if($(this).text() === 'Editorial') {
+				$(this).parent().css('height', 'auto');
+				$(this).parent().parent().css('padding-bottom', 0);
+			}
+		})
+
+
 
 		$('.splace-paragraph__annotation-gallery').on('click', function(e) {
 			e.preventDefault();
@@ -139,7 +149,7 @@ var splacePageController = (function($) {
 		        	titleElement: 'h3',
 		        	youTubeClickToPlay: false
 		        },
-		        links = this.getElementsByTagName('a');
+		        links = $(e.delegateTarget)[0].getElementsByTagName('a');//this.getElementsByTagName('a');
 		    blueimp.Gallery(links, options);
 		});
 

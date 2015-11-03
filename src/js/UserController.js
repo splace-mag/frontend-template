@@ -403,6 +403,7 @@ var splaceUserActionController = (function() {
 
 			if(response.success) {
 				close();	
+				splaceProfileActionController.init();
 				return;
 			}
 
