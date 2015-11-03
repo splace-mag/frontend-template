@@ -74,7 +74,7 @@ var splaceLandscapeAppController = (function($) {
 			}
 		});
 
-		setApp($('body').find('.splace-portrait').data('app-name'), $('body').find('.splace-portrait').data('app-folder'));
+		setApp($('body').find('.splace-portrait').data('app-name'), 'dummyApps/'+$('body').find('.splace-portrait').data('app-name'));
 	}
 
 	init();

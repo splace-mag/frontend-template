@@ -6,6 +6,8 @@ Author: Lukas Leitner
 
 var splacePageController = (function($) {
 
+
+	var _basePath = '';
 	var orientationController,
 		menuController;
 
@@ -63,7 +65,7 @@ var splacePageController = (function($) {
   			splaceOrientationController.setHelpSite(false);
   		}
 
-  		var color = $('body').find('.splace-portrait').data('color');
+  		var color = $(content).filter('.splace-portrait').data('color');
   		if(color.length !== 7) {
   			color = '#00909f';
   		}
@@ -73,7 +75,8 @@ var splacePageController = (function($) {
 	}
 
 	function setAppName() {
-		splaceLandscapeAppController.setApp($('body').find('.splace-portrait').data('app-name'), $('body').find('.splace-portrait').data('app-folder'));
+		var name = $('body').find('.splace-portrait').data('app-name');
+		splaceLandscapeAppController.setApp(name, 'dummyApps/'+name);
 	}
 
 	function setPageColor(color) {
@@ -351,6 +354,27 @@ var splacePageController = (function($) {
 		$('body').on('click, touchend', '.splace-paragraph__annotation', annotationClick);
 		$('body').on('click, touchend', '.splace-paragraph__comments', commentClick);
 		$('body').on('click, touchend', '.splace-paragraph__text', textClick);
+
+	}
+
+	function initLanguageSwitch() {
+		$('.splace-language-switcher').on('click', function(e) {
+			e.preventDefault();
+
+			var $target = $(e.target);
+			var newLang = 'DE';
+			if($target.text() === 'DE') {
+				newLang = 'EN';
+			}
+
+			$.get(_basePath+'/locale/'+newLang.toLowerCase())
+				.done(function(response) {
+					showPage(location.pathname, true);
+					$target.text(newLang);
+
+				});
+
+		});
 	}
 
 	function init() {
@@ -359,6 +383,7 @@ var splacePageController = (function($) {
 		menuController = splaceMenuController.init();
 		initLocation();
 		initGesture();
+		initLanguageSwitch();
 		//initClickListener();
 
 		splaceOrientationController.setCallback(orientationChanged);
