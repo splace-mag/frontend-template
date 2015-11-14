@@ -66,6 +66,7 @@
 					<span class="splace-add-comment-notice">Danke für Ihre Anmerkung!<br>Bevor diese veröffentlicht wird muss sie noch von einem unserer Mitarbeiter geprüft werden.</span>
 					<span class="splace-paragraph__comment-add splace-color">Kommentar hinterlassen</span>
 					<form name="splace-add-comment-form" class="splace-paragraph__comment-form">
+						<span class="splace-add-comment-cancel">(Abbrechen)</span>	
 						<span>Ihre Anmerkung</span>
 						<textarea name="comment" required></textarea>
 						<input type="submit" value="> Anmerkung absenden" class="splace-background-color">
@@ -269,6 +270,7 @@
 					<a href="https://www.youtube.com/watch?v=jhFqSlvbKAM" data-youtube="jhFqSlvbKAM" class="splace-video splace-video__youtube">
 						<img src="https://i.ytimg.com/vi_webp/jhFqSlvbKAM/mqdefault.webp">
 					</a>
+					<p class="splace-paragraph__annotation-info">Das ist eine Anmerkung zu einem Video</p>
 				</div>
 			</div>
 		</div>
@@ -331,7 +333,7 @@
 			</div>
 		</div>
 		
-		<div class="splace-paragraph">
+		<div class="splace-paragraph splace-paragraph--top-space">
 			<div class="splace-paragraph__links">
 				<span>Links</span>
 
@@ -375,9 +377,9 @@
 		<div class="splace-paragraph">
 			<div class="splace-paragraph__share">
 				<span>Share this article</span>
-				<a href="#" class="splace-background-color"><i class="icon-twitter"></i></a>
-				<a href="#" class="splace-background-color"><i class="icon-facebook"></i></a>
-				<a href="#" class="splace-background-color"><i class="icon-mail"></i></a>
+				<a href="https://twitter.com/share?url=http://splace-00-00.dmz.ufg.ac.at/2/article/1&via=splace-magazine" target="_blank" class="splace-background-color"><i class="icon-twitter"></i></a>
+				<a href="http://www.facebook.com/sharer/sharer.php?u=http://splace-00-00.dmz.ufg.ac.at/2/article/1" target="_blank" class="splace-background-color"><i class="icon-facebook"></i></a>
+				<a href="mailto:?subject=splace-magazine.at&body=http://splace-00-00.dmz.ufg.ac.at/2/article/1" target="_blank" class="splace-background-color"><i class="icon-mail"></i></a>
 			</div>
 			<p class="splace-paragraph__usages">
 				<span>MATERIAL USED IN THIS ARTICLE</span>
@@ -586,15 +588,21 @@
 				{name: 'Issue #2', url: '#', current: true}
 			],
 			navigationItems: [
-				{url: '/hilfe.html', title: 'Hilfe', subtitle: ''},
-				{url: '/inhalt.html', title: 'Inhaltsverzeichnis', subtitle: ''},
-				{url: '/splace.html', title: 'Cover', subtitle: ''},
-				{url: '/dummyPage.html', title: 'Inhaltsverzeichnis', subtitle: 'Index'},
-				{url: '/dummyPage2.html', title: 'Editorial', subtitle: 'Editorial'},
-				{url: '#', title: 'Staging Knowledge', subtitle: '1'},
-				{url: '#', title: 'Flock, Bernd Oppl', subtitle: '2'},
-				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3'},
-				{url: '#', title: 'Titel für einen Beitrag <br>hier geschrieben.', subtitle: '4'}
+				{url: '/hilfe.html', title: 'Hilfe', subtitle: '', spitzmarke: ''},
+				{url: '/inhalt.html', title: 'Inhaltsverzeichnis', subtitle: '', spitzmarke: ''},
+				{url: '/splace.html', title: 'Cover', subtitle: '', spitzmarke: ''},
+				{url: '/dummyPage.html', title: 'Inhaltsverzeichnis', subtitle: 'Index', spitzmarke: '12/6'},
+				{url: '/dummyPage2.html', title: 'Editorial', subtitle: 'Editorial', spitzmarke: '12/7'},
+				{url: '#', title: 'Staging Knowledge', subtitle: '1', spitzmarke: '12/8'},
+				{url: '#', title: 'Flock, Bernd Oppl', subtitle: '2', spitzmarke: '12/9'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Raum ist Rahmen <br>für Inhalte.', subtitle: '3', spitzmarke: '12/10'},
+				{url: '#', title: 'Titel für einen Beitrag <br>hier geschrieben.', subtitle: '4', spitzmarke: '12/11'}
 			],
 			token: '123456789',
 			user: {

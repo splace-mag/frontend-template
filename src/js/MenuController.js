@@ -65,6 +65,14 @@ var splaceMenuController = (function($) {
 		});
 	}
 
+	function setMenuListWidth() {
+		var completeWidth = 0;
+		$('.spalce-navigation-item').each(function() {
+		    completeWidth += $(this).width();
+		});
+		$('.splace-navigation__list').css('width', completeWidth);
+	}
+
 	function init() {
 		
 		issueSelection();
@@ -74,8 +82,13 @@ var splaceMenuController = (function($) {
 
 		$navList = $('.splace-navigation__list');
 		for(var i in splaceConfig.navigationItems) {
-			$navList.append('<li class="spalce-navigation-item"><a href="'+splaceConfig.navigationItems[i].url+'"><span class="splace-navigation-item__subtitle">'+splaceConfig.navigationItems[i].subtitle+'</span><span class="spalce-navigation-item__title">'+splaceConfig.navigationItems[i].title+'</span></a></li>');
+			$navList.append('<li class="spalce-navigation-item"><a href="'+splaceConfig.navigationItems[i].url+'"><span class="splace-navigation-item__subtitle">'+splaceConfig.navigationItems[i].spitzmarke+'</span><span class="spalce-navigation-item__title">'+splaceConfig.navigationItems[i].title+'</span></a></li>');
 		}
+
+		setMenuListWidth();
+
+		$(window).on('resize', setMenuListWidth);
+
 	}
 
 	return {

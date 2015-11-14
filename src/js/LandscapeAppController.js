@@ -26,7 +26,7 @@ var splaceLandscapeAppController = (function($) {
 				splaceApp.append(app);
 			},
 			error: function() {
-				alert('There was an error loading your app called \'' + name + '\' please check the name again.');
+				console.log('There was an error loading your app called \'' + name + '\' please check the name again.');
 			}
 		});
 
@@ -74,7 +74,7 @@ var splaceLandscapeAppController = (function($) {
 			}
 		});
 
-		setApp($('body').find('.splace-portrait').data('app-name'), 'dummyApps/'+$('body').find('.splace-portrait').data('app-name'));
+		setApp($('body').find('.splace-portrait').data('app-name'), '/apps/'+$('body').find('.splace-portrait').data('app-name'));
 	}
 
 	init();

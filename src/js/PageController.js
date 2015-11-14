@@ -131,9 +131,13 @@ var splacePageController = (function($) {
 		$('.splace-article-header').css('height', window.innerHeight-40);
 
 		$('.splace-article-header__marker').each(function() {
+			console.log($(this).text().substr(0, 8));
 			if($(this).text() === 'Editorial') {
 				$(this).parent().css('height', 'auto');
 				$(this).parent().parent().css('padding-bottom', 0);
+			}
+			if($(this).text().substr(0, 8) === 'splace –') {
+				$(this).parent().parent().css('padding-bottom', 0);	
 			}
 		})
 
@@ -173,6 +177,17 @@ var splacePageController = (function($) {
 
 			blueimp.Gallery([data], {youTubeClickToPlay: false, vimeoClickToPlay: false});
 		});
+
+		var currentH1 = $('.splace-article-header > h1');
+		var currentHeader = $('.splace-article-header');
+		var sideSpace = parseInt(currentH1.css('left'));
+		if(currentH1.css('left') === 'auto') {
+			sideSpace = parseInt(currentH1.css('right'));
+		}
+		var spaceForH1 = currentHeader.width() - sideSpace;
+		if(parseInt(currentH1.css('width')) > spaceForH1) {
+			currentH1.css('width', spaceForH1);
+		}
 	}
 
 	function orientationChanged(orientation) {
@@ -250,6 +265,7 @@ var splacePageController = (function($) {
 
 	function next() {
 		var currentIndex = getPageIndex(location.pathname);
+		setNothingActive();
 		
 		if(typeof splaceConfig.navigationItems[parseInt(currentIndex)+1] !== 'undefined') {
 			showPage(splaceConfig.navigationItems[parseInt(currentIndex)+1].url);
@@ -258,6 +274,7 @@ var splacePageController = (function($) {
 
 	function prev() {
 		var currentIndex = getPageIndex(location.pathname);
+		setNothingActive();
 			
 		if(typeof splaceConfig.navigationItems[parseInt(currentIndex)-1] !== 'undefined') {
 			showPage(splaceConfig.navigationItems[parseInt(currentIndex)-1].url);

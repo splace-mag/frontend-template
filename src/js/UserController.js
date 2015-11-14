@@ -448,6 +448,11 @@ var splaceUserActionController = (function() {
 		visible = false;
 	}
 
+	function open() {
+		userInterface.addClass('active');
+		visible = true;
+	}
+
 	function toggleUserInterface(e) {
 		e.preventDefault();
 
@@ -483,7 +488,8 @@ var splaceUserActionController = (function() {
 	init();
 
 	return {
-		close: close
+		close: close,
+		open: open
 	}
 
 })();

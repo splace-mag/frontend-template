@@ -66,7 +66,8 @@ var splaceCommentController = (function() {
 		e.stopPropagation();
 
 		if(!splaceUserController.isLoggedIn()) {
-			$('.splace-user__trigger').click();
+			//$('.splace-user__trigger').click();
+			splaceUserActionController.open();
 			return;
 		}
 
@@ -74,6 +75,7 @@ var splaceCommentController = (function() {
 		$target.siblings('form').unbind('submit');
 		$target.siblings('form').addClass('active').on('submit', submitComment);
 		$target.addClass('hidden');
+		$target.siblings('form').find('.splace-add-comment-cancel').on('click', disableCommentInputByClick);
 	}
 
 	function disableCommentInput($target) {
@@ -81,8 +83,13 @@ var splaceCommentController = (function() {
 		$target.siblings('span').removeClass('hidden');
 	}
 
+	function disableCommentInputByClick(e) {
+		disableCommentInput($(e.target).parent());
+	}
+
 	function init() {
 		$('body').on('click, touchend', '.splace-paragraph__comment-add', enableCommentInput);
+		
 	}
 
 	init();
