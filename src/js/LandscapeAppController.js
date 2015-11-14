@@ -19,7 +19,7 @@ var splaceLandscapeAppController = (function($) {
 	function initApp() {
 		console.log(app);
 		$.ajax({
-			url: app.folder + '/' + app.name + '.html', 
+			url: '/apps/' + app.name + '/' + app.name + '.html', 
 			async: false,
 			success: function(content) {
 				var app = $(content).filter('#splaceApp');
@@ -32,7 +32,7 @@ var splaceLandscapeAppController = (function($) {
 
 		var buf = [];
 		buf.push('<script id="appscript" src="');
-		buf.push(app.folder);
+		buf.push('/apps/'+app.name);
 		buf.push('/');
 		buf.push(app.name);
 		buf.push('.js');
@@ -42,7 +42,7 @@ var splaceLandscapeAppController = (function($) {
 
 		buf = [];
 		buf.push('<link id="appstyle" rel="stylesheet" href="');
-		buf.push(app.folder);
+		buf.push('/apps/'+app.name);
 		buf.push('/');
 		buf.push(app.name);
 		buf.push('.css');
@@ -58,15 +58,13 @@ var splaceLandscapeAppController = (function($) {
 
 	}
 
-	function setApp(name, folder) {
-		console.log(name);
+	function setApp(name) {
+		console.log('APP: '+name);
 		app.name = name;
-		app.folder = folder;
 	}
 	
 	function init() {
 		splaceOrientationController.setCallback(function(mode) {
-			console.log(mode);
 			if(mode === 'landscape') {
 				initApp();
 			} else {
@@ -74,7 +72,7 @@ var splaceLandscapeAppController = (function($) {
 			}
 		});
 
-		setApp($('body').find('.splace-portrait').data('app-name'), '/apps/'+$('body').find('.splace-portrait').data('app-name'));
+		setApp($('body').find('.splace-portrait').data('app-name'));
 	}
 
 	init();

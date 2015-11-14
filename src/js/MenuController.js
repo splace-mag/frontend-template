@@ -69,7 +69,9 @@ var splaceMenuController = (function($) {
 		var completeWidth = 0;
 		$('.spalce-navigation-item').each(function() {
 		    completeWidth += $(this).width();
+		    completeWidth += 60;
 		});
+		completeWidth -= 60;
 		$('.splace-navigation__list').css('width', completeWidth);
 	}
 
