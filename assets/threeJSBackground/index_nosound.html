@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - custom attributes [particles][billboards]</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				color: #ffffff;
+				font-family:Monospace;
+				font-size:13px;
+				text-align:center;
+				font-weight: bold;
+
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+			#info {
+				color: #fff;
+				position: absolute;
+				top: 0px; width: 100%;
+				padding: 5px;
+				z-index:100;
+			}
+			#container{
+			background
+			
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="container"></div>
+		<script src="build/three.min.js"></script>
+
+		<script src="js/Detector.js"></script>
+		<script src="js/libs/stats.min.js"></script>
+
+		<script type="x-shader/x-vertex" id="vertexshader">
+
+			attribute float size;
+			attribute vec3 ca;
+			varying vec3 vColor;
+
+			void main() {
+				vColor = ca;
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+				//gl_PointSize = size;
+				gl_PointSize = size * ( 300.0 / length( mvPosition.xyz ) );
+				gl_Position = projectionMatrix * mvPosition;
+
+			}
+		</script>
+
+		<script type="x-shader/x-fragment" id="fragmentshader">
+			uniform vec3 color;
+			uniform sampler2D texture;
+
+			varying vec3 vColor;
+
+			void main() {
+				vec4 color = vec4( color * vColor, 1.0 ) * texture2D( texture, gl_PointCoord );
+				if ( color.w < 0.5 ) discard;
+				gl_FragColor = color;
+			}
+		</script>
+
+
+		<script>
+
+		if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+
+		var renderer, scene, camera, stats;
+
+		var sphere, uniforms, attributes;
+
+		var vc1;  // Anzahl der Vertices, Objekt 1
+
+		var WIDTH = window.innerWidth;
+		var HEIGHT = window.innerHeight;
+		var radius;
+		var vertices;
+		
+
+		init();
+		animate();
+
+		function init() {
+
+			camera = new THREE.PerspectiveCamera( 15, WIDTH / HEIGHT, 1, 10000 );
+			camera.position.z = 460;
+
+			scene = new THREE.Scene();
+
+			attributes = {
+				size: {	type: 'f', value: [] },
+				ca:   {	type: 'c', value: [] }
+			};
+
+			uniforms = {
+				amplitude: { type: "f", value: 1.0 },
+				color:     { type: "c", value: new THREE.Color( 0xffffff ) },
+				texture:   { type: "t", value: THREE.ImageUtils.loadTexture( "textures/sprites/triangle_big.svg" ) },
+			};
+
+			uniforms.texture.value.wrapS = uniforms.texture.value.wrapT = THREE.RepeatWrapping;
+
+			var shaderMaterial = new THREE.ShaderMaterial( {
+
+				uniforms:       uniforms,
+				attributes:     attributes,
+				vertexShader:   document.getElementById( 'vertexshader' ).textContent,
+				fragmentShader: document.getElementById( 'fragmentshader' ).textContent,
+				transparent:    true
+
+			});
+
+
+			radius = 100, segments = 45, rings = 30;
+			
+			var geometry = new THREE.SphereGeometry( radius, segments, rings );
+			vc1 = geometry.vertices.length;
+
+			var geometry2 = new THREE.BoxGeometry( 2 * radius, 2 * radius, 2 * radius, 10, 10, 10 );
+			geometry.merge( geometry2 );
+
+			sphere = new THREE.PointCloud( geometry, shaderMaterial );
+
+			vertices = sphere.geometry.vertices;
+			var values_size = attributes.size.value;
+			var values_color = attributes.ca.value;
+
+			for ( var v = 0; v < vertices.length; v ++ ) {
+
+				values_size[ v ] = 10;
+				values_color[ v ] = new THREE.Color( 0xffffff );
+
+				if ( v < vc1 ) {
+					values_color[ v ].setHSL( 0.01 + 0.1 * ( v / vc1 ), 0.99, ( vertices[ v ].y + radius ) / ( 4 * radius ) );
+
+				} else {
+					values_size[ v ] = 85;
+					values_color[ v ].setHSL( 0.6, 0.75, 0.25 + vertices[ v ].y / ( 2 * radius ) );
+				}
+			}
+
+			scene.add( sphere );
+
+			renderer = new THREE.WebGLRenderer();
+			renderer.setPixelRatio( window.devicePixelRatio );
+			renderer.setSize( WIDTH, HEIGHT );
+
+			var container = document.getElementById( 'container' );
+			container.appendChild( renderer.domElement );
+
+			stats = new Stats();
+			stats.domElement.style.position = 'absolute';
+			stats.domElement.style.top = '0px';
+			container.appendChild( stats.domElement );
+
+			//
+
+			window.addEventListener( 'resize', onWindowResize, false );
+
+		}
+
+		function onWindowResize() {
+
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+
+			renderer.setSize( window.innerWidth, window.innerHeight );
+
+		}
+
+		function animate() {
+
+			requestAnimationFrame( animate );
+
+			render();
+			stats.update();
+
+		}
+
+		function render() {
+
+			var time = Date.now() * 0.005;
+
+			sphere.rotation.y = 0.02 * time;
+			sphere.rotation.z = 0.02 * time;
+			var vertices = sphere.geometry.vertices;
+
+			for( var i = 0; i < attributes.size.value.length; i ++ ) {
+
+				if ( i < vc1 ) {
+					attributes.size.value[ i ] = 70 + 60 * Math.sin( 0.002 * i + time*0.9 );  // 0.002 war vorher 0.1			
+					attributes.ca.value[ i ].setHSL(  0.99, 0.99 * Math.sin( 0.1 * i + time ), ( vertices[ i ].y + radius ) / ( 4 * radius )  );  
+//					attributes.ca.value[ i ].setHSL(  aktcolor * ( i / vc1 ), 0.99, ( vertices[ i ].y + radius ) / ( 4 * radius )  );  
+//					console.log ('i = '+ attributes.size.value.length);
+
+				} else {
+					attributes.size.value[ i ] = 100 + 60 * Math.sin( 0.001 * i + time*0.03 );				
+					attributes.ca.value[ i ].setHSL(  0.5 * Math.sin( 0.0005 * i + time*0.01 ), 0.85, ( vertices[ i ].y + radius ) / ( 4 * radius )  );  
+				}
+
+
+			}
+
+			attributes.size.needsUpdate = true;
+			attributes.ca.needsUpdate = true;
+
+			renderer.render( scene, camera );
+
+		}
+		
+/*
+			vertices = sphere.geometry.vertices;
+			var values_size = attributes.size.value;
+			var values_color = attributes.ca.value;
+
+			for ( var v = 0; v < vertices.length; v ++ ) {
+
+				values_size[ v ] = 10;
+				values_color[ v ] = new THREE.Color( 0xffffff );
+
+				if ( v < vc1 ) {
+					values_color[ v ].setHSL( 0.01 + 0.1 * ( v / vc1 ), 0.99, ( vertices[ v ].y + radius ) / ( 4 * radius ) );
+
+				} else {
+					values_size[ v ] = 100;
+					values_color[ v ].setHSL( 0.6, 0.75, 0.25 + vertices[ v ].y / ( 2 * radius ) );
+				}
+			}
+
+*/
+
+
+	</script>
+
+</body>
+
+</html>
