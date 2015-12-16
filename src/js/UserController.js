@@ -46,7 +46,7 @@ var splaceUserController = (function() {
 		if(!loggedin) {
 			return false;
 		}
-		if(user.image.startsWith('https://')) {
+		if(user.image && user.image.startsWith('https://')) {
 			return user.image;
 		}
 		return '/images/'+user.image;
