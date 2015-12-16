@@ -13,9 +13,9 @@ var splaceMenuController = (function($) {
 
 		for(var i in splaceConfig.issueList) {
 			if(splaceConfig.issueList[i].current) {
-				$('.splace-issue-selection__list').append('<li><a href="'+splaceConfig.issueList[i].url+'" style="color:#e60032;">'+splaceConfig.issueList[i].name+'</a></li>');
+				$('.splace-issue-selection__list').append('<li><a class="splace-external-link" href="'+splaceConfig.issueList[i].url+'" style="color:#e60032;">'+splaceConfig.issueList[i].name+'</a></li>');
 			} else {
-				$('.splace-issue-selection__list').append('<li><a href="'+splaceConfig.issueList[i].url+'">'+splaceConfig.issueList[i].name+'</a></li>');	
+				$('.splace-issue-selection__list').append('<li><a class="splace-external-link" href="'+splaceConfig.issueList[i].url+'">'+splaceConfig.issueList[i].name+'</a></li>');	
 			}
 		}
 

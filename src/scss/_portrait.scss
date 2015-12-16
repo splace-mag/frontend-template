@@ -38,6 +38,10 @@
 		z-index: 2;
 	}
 
+	&.splace-article-header--no-shadow:after {
+		display: none;
+	}
+
 	> h1 {
 		margin: 0;
 		color: #fff;
@@ -671,6 +675,7 @@
 	bottom: 12%;
 	color: #fff !important;
 	text-transform: uppercase;
+	z-index: 10;
 
 	> span {
 		display: block;
@@ -705,6 +710,7 @@
 	top: 20%;
 	position: absolute;
 	color: #fff;
+	z-index: 10;
 }
 
 .splace-cover-links__block {
@@ -751,4 +757,15 @@
 
 .splace-paragraph__annotation-info {
 	font-size: 1.7rem !important;
+}
+
+.splace-cover-logo {
+	z-index: 2 !important;
+	max-height: 100%;
+	max-width: 100%;
+	opacity: .8;
+}
+
+.splace-scroll-header {
+	overflow: auto !important;
 }

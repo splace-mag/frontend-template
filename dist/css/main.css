@@ -572,6 +572,8 @@ body {
     top: -500px;
     height: 500px;
     z-index: 2; }
+  .splace-article-header.splace-article-header--no-shadow:after {
+    display: none; }
   .splace-article-header > h1 {
     margin: 0;
     color: #fff;
@@ -1114,7 +1116,8 @@ body {
   position: absolute;
   bottom: 12%;
   color: #fff !important;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  z-index: 10; }
   .splace-cover-fat > span {
     display: block; }
 
@@ -1139,7 +1142,8 @@ body {
   left: 10%;
   top: 20%;
   position: absolute;
-  color: #fff; }
+  color: #fff;
+  z-index: 10; }
 
 .splace-cover-links__block {
   margin-bottom: 40px; }
@@ -1177,6 +1181,15 @@ body {
 
 .splace-paragraph__annotation-info {
   font-size: 1.7rem !important; }
+
+.splace-cover-logo {
+  z-index: 2 !important;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: .8; }
+
+.splace-scroll-header {
+  overflow: auto !important; }
 
 .splace-landscape {
   min-height: 100vh;
