@@ -12,6 +12,7 @@ var splaceOrientationController = (function($) {
 		callbacks = [];
 
 	function getActiveOrientation() {
+		checkOrientation();
 		return activeOrientation;
 	}
 
