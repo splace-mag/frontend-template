@@ -2,6 +2,7 @@
 /**
  * This is called by the framework after widget was successfully loaded
  */ 
+var galInit = false;
 function gal_startup() {
 	
 	console.log('Gal started');
@@ -95,6 +96,28 @@ function gal_startup() {
 	        links = $(e.delegateTarget)[0].getElementsByTagName('a');//this.getElementsByTagName('a');
 	    blueimp.Gallery(links, options);
 	});
+
+	$(".gal-item__img-cover-slider > div:gt(0)").hide();
+	window.setTimeout(function() {
+		/*$('.gal-item__img-cover-slider > div:first')
+			    .fadeOut(1000)
+			    .next()
+			    .fadeIn(1000)
+			    .end()
+			    .appendTo('.gal-item__img-cover-slider');*/
+
+		if(!galInit) {
+			galInit = true;
+			setInterval(function() { 
+			  $('.gal-item__img-cover-slider > div:first')
+			    .fadeOut(1000)
+			    .next()
+			    .fadeIn(1000)
+			    .end()
+			    .appendTo('.gal-item__img-cover-slider');
+			},  5000);
+		}
+	}, 5000);
 };
 
 /**
