@@ -1,0 +1,53 @@
+.dummy_main {
+	color: blue;
+}
+
+#imageViewport {
+	position:relative;
+	background-color:blue; width:1024px; height:730px;
+}
+
+.filterImage {
+	position:absolute;
+	height: 100%;
+	width:100%;
+	text-align: left;
+	z-index:1;
+}
+
+#noFilterImage {
+	opacity:0; /* is only 0 for testing the layers; set to 1 for normal usage */
+}
+
+#rightFilter {
+	opacity:0;
+}
+
+#leftFilter {
+	opacity:0;
+}
+
+#topFilter {
+	opacity:0;
+}
+
+#bottomFilter {
+	opacity:0;
+}
+
+.infoElement {
+	position:absolute;
+	border-style:ridge;
+	border-width:5px;
+	border-color:white;
+	height: 10%;
+	width:40%;
+	z-index:2;
+	opacity:0;
+}
+
+#topInfo {
+	margin-left:300px;
+	margin-top:20px;
+	background-color:black;
+}

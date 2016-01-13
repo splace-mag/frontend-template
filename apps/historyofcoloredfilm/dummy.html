@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>App</title>
+	<link rel="stylesheet" href="dummy.css">
+</head>
+<body>
+	<script type="text/javascript" src="CamanJS-4.1.1\dist\caman.full.min.js"></script>
+	<div id="splaceApp">
+		<div id="imageViewport">
+			<div class="filterImage" id="noFilter">
+			</div>
+			<div class="filterImage" id="rightFilter">
+			</div>
+			<div class="filterImage" id="leftFilter">
+			</div>
+			<div class="filterImage" id="topFilter">
+			</div>
+			<div class="filterImage" id="bottomFilter">
+			</div>
+			<div class="infoElement" id="rightInfo">
+			</div>
+			<div class="infoElement" id="leftInfo">
+			</div>
+			<div class="infoElement" id="topInfo">
+				<p>TRUE COLOR</p>
+			</div>
+			<div class="infoElement" id="bottomInfo">
+			</div>
+		</div>
+	</div>
+	<p id="acX"></p>
+	<p id="acY"></p>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="dummy.js"></script>
+	<script>
+		dummy_startup();
+		var w=1024;
+		var h=730;
+		
+		//Step 1: get base image
+		var base = document.createElement('canvas');
+		var ctx = base.getContext('2d');
+		base.id = 'noFilterImage';
+		document.getElementById('noFilter').appendChild(base);
+		
+		loadImage(base, 'stack/yoko.jpg', w, h).done(function(){
+				//Step 2: render filtered images
+				var imgData=ctx.getImageData(0,0,base.width,base.height);
+				
+				var left = cloneCanvas(base);
+				left.id = 'leftFilterImage';
+				document.getElementById('leftFilter').appendChild(left);
+				/*c = Caman('#leftFilterImage', function () {
+					this.greyscale().render();
+				});
+				Caman.Event.listen(c, "processComplete", function (job) {
+					console.log("Finished:", job.name);
+				});*/
+			
+			
+			//render right filter eastman-color
+			var right = document.createElement('canvas');
+			right.id = 'rightFilterImage';
+			document.getElementById('rightFilter').appendChild(right);
+			right.width = base.width;
+			right.height = base.height;
+			right.getContext('2d').putImageData(imgData,0,0);
+			/*Caman('#rightFilterImage', function () {
+				this.channels({
+					red: 0,
+					green: 0,
+					blue: 50
+				}).render();
+			});*/
+			
+			//render top filter true-color
+			var topImg = document.createElement('canvas');
+			topImg.id = 'topFilterImage';
+			document.getElementById('topFilter').appendChild(topImg);
+			topImg.width = base.width;
+			topImg.height = base.height;
+			topImg.getContext('2d').putImageData(imgData,0,0);
+			/*Caman('#topFilterImage', function () {
+				this.saturation(100).render();
+			});*/
+			
+			
+
+			//render bottom filter ufa-film
+			var bottom = document.createElement('canvas');
+			bottom.id = 'bottomFilterImage';
+			document.getElementById('bottomFilter').appendChild(bottom);
+			bottom.width = base.width;
+			bottom.height = base.height;
+			bottom.getContext('2d').putImageData(imgData,0,0);
+			/*Caman('#bottomFilterImage', function () {
+				this.sepia(80).render();
+			});*/
+		});
+
+		//Step 3: opacity Interpolation
+		window.addEventListener('deviceorientation',function(event){ 
+			var beta = event.beta;
+			var gamma = event.gamma;
+			
+			var maxAngle = 60;
+			var minAngle = -60;
+			
+			if(beta > maxAngle) beta = maxAngle;
+			if(gamma > maxAngle) gamma = maxAngle;
+			if(beta < minAngle) beta = minAngle;
+			if(gamma < minAngle) gamma = minAngle;
+			
+			//get weight of the beta and gamma value on the total opacity change
+			var fb = Math.abs(beta)/(Math.abs(beta)+Math.abs(gamma));
+			var fg = 1-fb;
+			
+			//beta value filters: bottom = ]0;60] top = ]0;-60] 
+			if(beta > 0){
+				var opacity = Math.round(beta/maxAngle*100)/100;
+				$('#bottomFilter').css({'opacity':opacity*fb});
+				$('#topFilter').css({'opacity':0});
+			}else if(beta < 0){
+				var opacity = Math.round(beta/minAngle*100)/100;
+				$('#bottomFilter').css({'opacity':0});
+				$('#topFilter').css({'opacity':opacity*fb});
+			}else{
+				$('#bottomFilter').css({'opacity':0});
+				$('#topFilter').css({'opacity':0});
+			}
+			
+			//gamma value filters: right = ]0;60] left = ]0;-60] 
+			if(gamma > 0){
+				var opacity = Math.round(gamma/maxAngle*100)/100;
+				$('#rightFilter').css({'opacity':opacity*fg});
+				$('#leftFilter').css({'opacity':0});
+			}else if(gamma < 0){
+				var opacity = Math.round(gamma/minAngle*100)/100;
+				$('#rightFilter').css({'opacity':0});
+				$('#leftFilter').css({'opacity':opacity*fg});
+			}else{
+				$('#rightFilter').css({'opacity':0});
+				$('#leftFilter').css({'opacity':0});
+			}
+			
+		},false);
+		
+		//Step 4: render info elements
+	</script>
+</body>
+</html>

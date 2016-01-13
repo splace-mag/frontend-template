@@ -18,6 +18,9 @@ var splaceLandscapeAppController = (function($) {
 
 	function initApp() {
 		splaceApp.html('');
+		if(app === 'index') {
+			return;
+		}
 		console.log(app);
 		$.ajax({
 			url: '/apps/' + app.name + '/' + app.name + '.html', 
@@ -84,6 +87,10 @@ var splaceLandscapeAppController = (function($) {
 			initApp();
 		}
 	}
+
+	function getApp() {
+		return app.name;
+	}
 	
 	function init() {
 		splaceOrientationController.setCallback(function(mode) {
@@ -100,7 +107,8 @@ var splaceLandscapeAppController = (function($) {
 	init();
 
 	return {
-		setApp: setApp
+		setApp: setApp,
+		getApp: getApp
 	}
 
 })(jQuery);

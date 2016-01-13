@@ -16,8 +16,28 @@ var splaceOrientationController = (function($) {
 		return activeOrientation;
 	}
 
-	function setActiveOrientation(mode) {
+	function isNonLandscapeSite() {
+		var allowedPaths = [
+		'/',
+		'/2/splace',
+		'/help',
+		'/2/article/14'];
+		if(allowedPaths.indexOf(location.pathname) !== -1) {
+			return true;
+		}
+		if(typeof splaceLandscapeAppController === 'undefined') {
+			return false;
+		}
+		if(splaceLandscapeAppController.getApp() === 'index') {
+			return true;
+		}
+		return false;
+	}
 
+	function setActiveOrientation(mode) {
+		if(isNonLandscapeSite()) {
+			mode = 'portrait';
+		}
 		if(mode === 'landscape') {
 			$('body').removeClass('splace-orientation--portrait');
 			$('body').addClass('splace-orientation--landscape');

@@ -35,7 +35,11 @@ var splaceMenuController = (function($) {
 			$nav = $(_navigationSelector);
 			if($nav.hasClass('active')) {
 				$nav.removeClass('active');
+				window.setTimeout(function() {
+					$nav.css('height', 0);
+				}, 500);
 			} else {
+				$nav.css('height', 80);
 				$nav.addClass('active');
 			}
 		});
@@ -71,7 +75,7 @@ var splaceMenuController = (function($) {
 		    completeWidth += $(this).width();
 		    completeWidth += 60;
 		});
-		completeWidth -= 60;
+		//completeWidth -= 60;
 		$('.splace-navigation__list').css('width', completeWidth);
 	}
 
@@ -83,8 +87,14 @@ var splaceMenuController = (function($) {
 		userLinkTrigger();
 
 		$navList = $('.splace-navigation__list');
+		var currentSpitzmark = '';
 		for(var i in splaceConfig.navigationItems) {
-			$navList.append('<li class="spalce-navigation-item"><a href="'+splaceConfig.navigationItems[i].url+'"><span class="splace-navigation-item__subtitle">'+splaceConfig.navigationItems[i].spitzmarke+'</span><span class="spalce-navigation-item__title">'+splaceConfig.navigationItems[i].title+'</span></a></li>');
+			if(splaceConfig.navigationItems[i].spitzmarke.length > 0) {
+				currentSpitzmark = splaceConfig.navigationItems[i].spitzmarke;
+			} else {
+				currentSpitzmark = '&nbsp;';
+			}
+			$navList.append('<li class="spalce-navigation-item"><a href="'+splaceConfig.navigationItems[i].url+'"><span class="splace-navigation-item__subtitle">'+currentSpitzmark+'</span><span class="spalce-navigation-item__title">'+splaceConfig.navigationItems[i].title+'</span></a></li>');
 		}
 
 		setMenuListWidth();

@@ -46,7 +46,7 @@
 		margin: 0;
 		color: #fff;
 		position: absolute;
-		z-index: 100;
+		z-index: 110;
 		font-size: 3.25rem;
 		text-align: left;
 		width: 90%;
@@ -62,7 +62,7 @@
 		color: #fff;
 		text-align: center;
 		position: absolute;
-		z-index: 110;
+		z-index: 100;
 		width: 50%;
 		font-size: 1.3rem;
 		line-height: 2rem;
@@ -72,6 +72,17 @@
 		position: absolute;
 		z-index: 90;
 
+	}
+
+	@media (max-width: 660px) {
+		> h1 {
+			font-size: 32px;
+			line-height: 38px;
+		}
+		> h2 {
+			font-size: 20px;
+			line-height: 24px;
+		}
 	}
 }
 
@@ -147,7 +158,7 @@
 	z-index: 1;
 	position: relative;
 	float: left;
-	font-size: 1.1rem;
+	font-size: 1.0rem;
 	line-height: 1.5rem;
 }
 
@@ -175,7 +186,12 @@
 }
 
 .splace-paragraph__annotation-gallery {
+	text-decoration: underline;
 	cursor: pointer;
+}
+
+.splace-paragraph__annotation-video {
+	text-decoration: underline;
 }
 
 .splace-paragraph__annotation-gallery > a {
@@ -210,7 +226,7 @@
 	background-repeat: no-repeat;
 	left: 0%;
 	top: 2.9rem;
-	padding: 2rem 0 2rem 2rem;
+	padding: 2rem 0 2rem 1rem;
 	opacity: .5;
 	transition: all 0.7s ease;
 
@@ -219,7 +235,7 @@
 		content: attr(data-comment-count);
 		position: absolute;
 		top: 9px;
-		left: 15px;
+		right: -7px;
 		display: block;
 		font-size: 20px;
 		color: inherit;
@@ -228,7 +244,7 @@
 
 	> svg {
 		position: absolute;
-		left: 0;
+		right: -20px;
 		top: 0;
 		padding-bottom: 40px;
 		padding-right: 40px;
@@ -256,16 +272,25 @@
 	.media {
 		margin-left: 0;
 	}
+
+	p {
+		position: relative;
+		top: -13px;
+	}
 }
 
 .splace-paragraph__comment-author {
 	font-weight: 600;
 	display: block;
+	position: relative;
+	top: -4px;
 }
 .splace-paragraph__comment-time {
 	font-style: italic;
 	display: block;
 	font-size: .9rem;
+	position: relative;
+	top: -6px;
 }
 
 .splace-paragraph__comment-note {
@@ -284,6 +309,16 @@
 	z-index: 499;
 }
 
+.splace-paragraph__comment-netiquette {
+	color: #000;
+	opacity: .5;
+	font-size: .8rem;
+
+	&.hidden {
+		display: none;
+	}
+}
+
 .splace-paragraph__comment-add {
 	text-decoration: underline;
 	font-weight: bold;
@@ -300,12 +335,15 @@
 	position: relative;
 
 	> textarea {
-		width: 90%;
+		width: 100%;
 		height: 15rem;
-		padding-top: 30px;
+		padding-top: 10px;
 		padding-left: 8px;
 		padding-right: 5px;
 		color: #333;
+		border: 0;
+		margin-left: -8px;
+		margin-top: 20px;
 	}
 
 	> span {
@@ -327,7 +365,7 @@
 		font-weight: bold;
 		border: 0;
 		color: #fff;
-		margin-right: 1.8rem;
+		margin-right: .6rem;
 		font-size: .9rem;
 		margin-top: 10px;
 	}
@@ -353,7 +391,7 @@
 	padding-bottom: 0;
 	font-size: 1.3rem;
 	line-height: 1.4em;
-	color: #09909f;
+	color: #000;
 	font-weight: 600;
 	margin-bottom: 0;
 }
@@ -410,7 +448,7 @@
 	}
 
 	> a {
-		color: #09909f;
+		color: #000;
 		text-decoration: none;
 		margin-bottom: 1rem;
 		display: block;
@@ -472,10 +510,11 @@
 	transform-origin: center right;
 	width: 100%;
 	height: 100%;
-	z-index: 100;
+	z-index: 400;
 	background: #fff;
 	overflow: auto;
 	padding-bottom: 50px;
+	padding-top: 180px;
 
 	> img {
 		width: 66%;
@@ -489,10 +528,10 @@
 		width: 40%;
 		float: right;
 		margin-right: 30px;
-		margin-top: 30%;
-		font-weight: bold;
-		text-decoration: underline;
-		font-size: 1.5rem;
+		margin-top: 5%;
+		font-size: 1.1rem;
+		line-height: 1.5rem;
+		margin-left: 50%;
 	}
 
 	> .close {
@@ -535,6 +574,7 @@
 	width: 40%;
 	opacity: 1;
 	height: auto;
+	z-index: 10;
 
 	> .splace-paragraph__comment-note {
 		transform: translateX(0px);	
@@ -586,11 +626,11 @@
 	}
 
 	&:nth-child(3) {
-		margin-bottom: 4.68vh;
+		//margin-bottom: 4.68vh;
 	}
 
 	&:nth-child(6) {
-		margin-bottom: 6vh;
+		//margin-bottom: 6vh;
 	}
 
 	/** 
@@ -609,11 +649,11 @@
 		}
 
 		&:nth-child(3) {
-			margin-bottom: 1024px * 0.0468;
+			
 		}
 
 		&:nth-child(6) {
-			margin-bottom: 1024px * 0.06;
+			
 		}
 	}
 
@@ -633,11 +673,11 @@
 		}
 
 		&:nth-child(3) {
-			margin-bottom: 768px * 0.0468;
+			
 		}
 
 		&:nth-child(6) {
-			margin-bottom: 768px * 0.06;
+			
 		}
 	}
 	
@@ -657,6 +697,11 @@
 
 .splace-article-header--cover {
 	background: #000;
+	min-height: 850px;
+
+	@media (max-width: 550px) {
+		min-height: 1000px;
+	}
 
 	.no-webgl & {
 		background: url('/assets/fallbackCover.png') no-repeat center;
@@ -738,6 +783,7 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
+	border-color: #000;
 
 	.no-webgl & {
 		display: none;
@@ -749,10 +795,12 @@
 }
 
 .splace-add-comment-cancel {
-	top: -21px !important;
+	top: -29px !important;
 	left: auto !important;
 	right: 2rem;
 	cursor: pointer;
+	color: #ff0000 !important;
+	font-size: 24px !important;
 }
 
 .splace-paragraph__annotation-info {
@@ -768,4 +816,14 @@
 
 .splace-scroll-header {
 	overflow: auto !important;
+}
+
+.splace-video {
+	img {
+		width: 100%;
+	}
+}
+
+#blueimp-gallery .close {
+	display: block !important;
 }

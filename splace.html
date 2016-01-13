@@ -10,7 +10,7 @@
 </head>
 <body class="splace-orientation--portrait">
 	
-	<div class="splace-portrait" data-color="#ff0000" data-app-folder="dummyApps/historyofcoloredfilm" data-app-name="helsinki">
+	<div class="splace-portrait" data-color="#ff0000" data-app-folder="dummyApps/historyofcoloredfilm" data-app-name="gal">
 		<div class="splace-article-header" style="background-image: linear-gradient(-60deg, rgb(73,137,124), rgb(112,198,215));">
 			<div class="splace-article-header__marker">Cover</div>
 			<div class="splace-article-header__marker annotated">Reading: 7 min</div>
@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="splace-paragraph">
-			<div class="splace-paragraph__comments splace-color splace-background-color-alpha" data-comment-count="3">
+			<div class="splace-paragraph__comments splace-color splace-background-color-bright" data-comment-count="3">
 				<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="19.1px" height="18.2px" viewBox="0 0 19.1 18.2" enable-background="new 0 0 19.1 18.2" xml:space="preserve">
 					<g>
 						<g>
@@ -61,14 +61,20 @@
 					</div>
 				</div>
 
-				<div class="splace-paragraph__comment-note">Note</div>
+				<div class="splace-paragraph__comment-note">Ihre Anmerkung</div>
 				<div class="splace-paragraph__comment-add-note-wrapper">
-					<span class="splace-add-comment-notice">Danke für Ihre Anmerkung!<br>Bevor diese veröffentlicht wird muss sie noch von einem unserer Mitarbeiter geprüft werden.</span>
-					<span class="splace-paragraph__comment-add splace-color">Kommentar hinterlassen</span>
+					<p class="splace-paragraph__comment-netiquette splace-paragraph__comment-netiquette--1">
+						Wir achten auf die Netiquette!<br>Vor Freischaltung Ihrer Anmerkung wird diese noch von der Redaktion gelesen und freigegeben.
+					</p>
+					<span class="splace-add-comment-notice">Danke für Ihr Statement!</span>
+					<span class="splace-paragraph__comment-add splace-color">Kommentar hinzufügen</span>
 					<form name="splace-add-comment-form" class="splace-paragraph__comment-form">
-						<span class="splace-add-comment-cancel">(Abbrechen)</span>	
-						<span>Ihre Anmerkung</span>
+						<span class="splace-add-comment-cancel">x</span>	
+						<!--<span>Ihre Anmerkung</span>-->
 						<textarea name="comment" required></textarea>
+						<p class="splace-paragraph__comment-netiquette splace-paragraph__comment-netiquette--2">
+							Wir achten auf die Netiquette!<br>Vor Freischaltung Ihrer Anmerkung wird diese noch von der Redaktion gelesen und freigegeben.
+						</p>
 						<input type="submit" value="> Anmerkung absenden" class="splace-background-color">
 						<input type="hidden" name="paragraph-id" value="1234">
 					</form>
@@ -356,12 +362,14 @@
 			</div>
 
 			<div class="splace-paragraph__author media">
-				<div class="splace-paragraph__author-blend splace-background-color-alpha2">
+				<!--<div class="splace-paragraph__author-blend splace-background-color-alpha2">-->
+				<div class="splace-paragraph__author-blend">
 					<img src="assets/ute.jpg" alt="">
 				</div>
 				<div class="bd">
-					<span>Ute Ploier works an lives in Vienna this is a small sentence.</span>
-					<a href="#" class="splace-paragraph__author-more">read more</a>
+					<a href="#" class="splace-paragraph__author-more splace-color">
+						<span>Ute Ploier works an lives in Vienna this is a small sentence.</span>
+					</a>
 				</div>
 
 				<div class="splace-paragraph__author-full">

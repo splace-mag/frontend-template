@@ -76,6 +76,9 @@ var splaceCommentController = (function() {
 		$target.siblings('form').addClass('active').on('submit', submitComment);
 		$target.addClass('hidden');
 		$target.siblings('form').find('.splace-add-comment-cancel').on('click', disableCommentInputByClick);
+
+		$target.siblings('.splace-paragraph__comment-netiquette--1').addClass('hidden');
+		//$target.siblings('form').find('.splace-paragraph__comment-netiquette--2').removeClass('hidden');
 	}
 
 	function disableCommentInput($target) {
