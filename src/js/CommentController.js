@@ -19,7 +19,9 @@ var splaceCommentController = (function() {
 		var html = getCommentHTML(comment, tmpCommentId);
 		$lastComment = $target.parents('.splace-paragraph__comments').find('.splace-paragraph__comment').last();
 
-		$(html).insertAfter($lastComment);
+		$target.parents('.splace-paragraph__comments').find('.splace-paragraph__comment-netiquette--1').removeClass('hidden');
+
+		//$(html).insertAfter($lastComment);
 
 		$.post('/addComment', {paragraphId: paragraphId, comment: comment, _token: splaceConfig.token})
 			.done(function(response) {

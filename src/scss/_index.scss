@@ -20,21 +20,23 @@
 
 .splace-index-item__number {
 	display: block;
-	text-align: center;
+	text-align: left;
+	font-size: .8rem;
 }
 
 .splace-index-item__title {
 	padding-bottom: 0;
 	margin-bottom: .3rem;
 	text-decoration: underline;
-	line-height: 1.5;
-	font-size: 1.5rem;
+	line-height: 1.5rem;
+	font-size: 1.2rem;
+	margin-top: .3rem;
 }
 .splace-index-item__subtitle {
 	margin-top: 0;
 	font-style: italic;
 	font-weight: normal;
-	font-size: 1.2rem;
+	font-size: 1.0rem;
 }
 
 .splace-index-separator {

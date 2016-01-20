@@ -3,6 +3,7 @@
  * This is called by the framework after widget was successfully loaded
  */ 
 var galInit = false;
+var galInitPos = false;
 function gal_startup() {
 	
 	console.log('Gal started');
@@ -40,7 +41,7 @@ function gal_startup() {
 		isOpen = false;
 		$('.gal-menu').removeClass('active');
 	});
-
+/*
 	window.setTimeout(function() {
 		targetBox = $('.gal-item--home')
 		$('html, body, .gal-wrapper').scrollLeft(parseInt(targetBox.css('left')));	
@@ -50,7 +51,20 @@ function gal_startup() {
 		targetBox = $('.gal-item--home')
 		$('html, body, .gal-wrapper').scrollLeft(parseInt(targetBox.css('left')));	
 		$('html, body').scrollTop(parseInt(targetBox.css('top')));
-	}, 1000);
+	}, 1000);*/
+
+	var timeoutRef = window.setInterval(function() {
+		targetBox = $('.gal-item--home')
+		if(parseInt(targetBox.css('left')) > 500 && parseInt($('.gal-wrapper').scrollLeft()) === parseInt(targetBox.css('left')) && $('body').scrollTop() === parseInt(targetBox.css('top'))) {
+			galInitPos = true;
+			clearInterval(timeoutRef);
+		} else {
+			$('html, body, .gal-wrapper').scrollLeft(parseInt(targetBox.css('left')));	
+			$('html, body').scrollTop(parseInt(targetBox.css('top')));
+		}
+
+
+	}, 100);
 
 
 	$('.splace-gallery-video').on('click', function(e) {

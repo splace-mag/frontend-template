@@ -9,6 +9,27 @@ var splaceMenuController = (function($) {
 	var _issueSelector = '.splace-issue-selection',
 		_navigationSelector = '.splace-navigation';
 
+	var menuTimeout = 0;
+	var menuTimeoutInterval = null;
+
+	function menuTimeoutFunc() {
+		if(menuTimeoutInterval !== null) {
+			return;
+		}
+		menuTimeoutInterval = window.setInterval(function() {
+			if(menuTimeout === 0 || menuTimeout < 0) {
+				clearInterval(menuTimeoutInterval);
+				menuTimeoutInterval = null;
+				$nav.removeClass('active');
+				window.setTimeout(function() {
+					$nav.css('height', 0);
+				}, 500);
+			} else {
+				menuTimeout--;
+			}
+		}, 1000)
+	}
+
 	function issueSelection() {
 
 		for(var i in splaceConfig.issueList) {
@@ -34,6 +55,11 @@ var splaceMenuController = (function($) {
 		$('.splace-navigation-trigger').on('click', function(e) {
 			$nav = $(_navigationSelector);
 			if($nav.hasClass('active')) {
+				if(menuTimeoutInterval !== null) {
+					clearInterval(menuTimeoutInterval);
+					menuTimeoutInterval = null;	
+				}
+				
 				$nav.removeClass('active');
 				window.setTimeout(function() {
 					$nav.css('height', 0);
@@ -41,6 +67,8 @@ var splaceMenuController = (function($) {
 			} else {
 				$nav.css('height', 80);
 				$nav.addClass('active');
+				menuTimeout = 5;
+				menuTimeoutFunc();
 			}
 		});
 	}
@@ -100,6 +128,9 @@ var splaceMenuController = (function($) {
 		setMenuListWidth();
 
 		$(window).on('resize', setMenuListWidth);
+		$(".splace-navigation__list-wrapper").scroll(function() {
+			menuTimeout = 5;
+		});
 
 	}
 

@@ -11,24 +11,25 @@
 .splace-portrait-next,
 .splace-landscape-next {
 	width: 100%;
-	height: 100vh;
+	height: auto;
 	position: fixed;
 	top: 0;
-	transition: all .5s ease;
 	z-index: 50;
 	text-align: justify;
 
 	&.left {
+		
 		left: -100%;
 		&.move-in {
-			left: 0vw;
+			transition: left 1.5s ease;
+			left: 0%;
 		}
 	}
 	&.right {
 		right: -100%;
-
 		&.move-in {
-			right: 0vw;
+			transition: right 1.5s ease;
+			right: 0%;
 		}
 	}
 

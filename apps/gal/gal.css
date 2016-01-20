@@ -23,6 +23,10 @@
 /*border: 1px dotted red;*/
 }
 
+.gal-holder .blueimp-gallery > .close {
+	right: 35px;
+}
+
 .gal-item__img-holder {
 	position: absolute;
 	line-height: 15em;
@@ -67,7 +71,7 @@ a.gal-item__img-holder {
 	line-height: 1.666666em;
 }
 .gal-item__text-holder > h3 {
-	font-size: 9em;
+	font-size: 12em;
 	text-transform: uppercase;
 	line-height: 1.333333em;
 }
@@ -81,8 +85,8 @@ a.gal-item__img-holder {
 }
 
 .gal-item--home {
-	left: 2800px;
-	top: 2100px;
+	left: 2800em;
+	top: 2100em;
 	
 	overflow: hidden;
 }
@@ -121,7 +125,7 @@ a.gal-item__img-holder {
 .gal-menu > h3 {
 	font-size: 30em;
 	text-decoration: underline;
-	margin: 2em 0 0 0;
+	margin: .6em 0 0 0;
 }
 .gal-menu__list {
 	list-style: none;
@@ -139,7 +143,8 @@ a.gal-item__img-holder {
 
 .gal-menu__list li {
 	padding: 0;
-	margin-bottom: 20em;
+	margin-bottom: 17em;
+	display: inline-block;
 }
 .gal-menu__list a {
 	display: block;

@@ -92,7 +92,12 @@ var splaceOrientationController = (function($) {
 	function initOrientationWatcher() {
 		
 		window.addEventListener("resize", function() {
-			checkOrientation();
+			window.setTimeout(function() {
+				checkOrientation();	
+			}, 10);
+			window.setTimeout(function() {
+				checkOrientation();	
+			}, 100);
 		}, false);
 		checkOrientation();
 	}

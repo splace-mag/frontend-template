@@ -447,6 +447,10 @@ var splaceUserActionController = (function() {
 		userInterface.removeClass('active');
 		visible = false;
 	}
+	function closeModal() {
+		userInterface.removeClass('active');
+		visible = false;
+	}
 
 	function open() {
 		userInterface.addClass('active');
@@ -512,14 +516,14 @@ var splacePWResetActionController = (function() {
 
 		splaceUserController.sendResetMail(email, function(response) {
 			if(response.success) {
-				$('.splace-user__profile-form').addClass('hidden');
-				$('.splace-user__profile-success').addClass('active');
+				$('.splace-user__pw-reset-form').addClass('hidden');
+				$('.splace-user__pw-reset-success').addClass('active');
 			} else {
 				if(typeof response.error !== 'string') {
 					response.error = 'Bitte prüfen Sie Ihre Eingabe.';
 				}
-				$('.splace-user__profile-form h4').text(response.error);
-				$('.splace-user__profile-form h4').addClass('active');
+				$('.splace-user__pw-reset-form h4').text(response.error);
+				$('.splace-user__pw-reset-form h4').addClass('active');
 			}
 		});
 	}
@@ -589,7 +593,8 @@ var splaceProfileActionController = (function() {
 
 		splaceUserController.updateProfile(name, email, password, photo, function(response) {
 			if(response.success) {
-				close();
+				toggleUserInterface();
+				window.location.reload();
 				return;
 			} else {
 				$('.splace-user__profile-form > h4').addClass('active').text(response.error);
